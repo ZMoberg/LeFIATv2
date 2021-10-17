@@ -1,20 +1,19 @@
 const express = require('express')
 const router = express.Router()
 
-
-// All products route
+// All gear route
 router.get('/', (req, res) => {
-    res.render('products')
+    res.render('gear')
 })
 
-// New product route
+// New gear route
 
 router.get('/new', (req, res) => {
-    res.render('products/new')
+    res.render('gear/new')
 })
 
 
-// Create product route
+// Create gear route
 router.post('/', (req, res) => {
     res.send('Create')
 })
