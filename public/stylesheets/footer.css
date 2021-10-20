@@ -1,0 +1,29 @@
+footer {
+    background: url('/img/lf-footer.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.blog__action {
+    position: absolute;
+    top: 40%;
+    right: 15%;
+}
+
+.blog__action a {
+    font-size: 2.25rem;
+    letter-spacing: .25rem;
+}
+
+#footer__nav {
+    margin-top: 25rem;
+}
+
+.cloud1 {
+    background-image: url('/img/clouds.png');
+    background-repeat: no-repeat;
+}
+
+.cloud2 {
+    background-image: url('/img/clouds2.png');
+}
