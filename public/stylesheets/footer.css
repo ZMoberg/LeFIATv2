@@ -1,9 +1,8 @@
 footer {
     padding-top: 100px;
-    background: url('/img/lf-footer.jpg') no-repeat center;
-   
-    height: 450px;
-   
+    background: url('/img/lf-footer.jpg') no-repeat center center;
+    background-size: cover;
+    height: 600px;
     font-family: good-times;
     text-align: center;
 }
@@ -12,26 +11,26 @@ footer {
    
 }
 
-.social a {
-    
+.social a img {
+  max-height: 2.15rem;
 }
 
 .blog__action {
     position: absolute;
     top: 35%;
-    right: 9%;
-    
+    right: 12%; 
 }
 
 .blog__action a {
-    font-size: 1.95rem;
+    font-size: 1.35rem;
     letter-spacing: .25rem;
     color: #000;
 }
 
 #footer__nav {
   position: relative;
-  top: 15rem;
+  top: 20rem;
+  
 }
 
 .cloud1 {
