@@ -1,11 +1,7 @@
 header {
-
     height: 100vh;
     position: relative;
     color: white;
-    background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67), url('/img/header.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
     background-position: top;
     z-index: 4;
   }
@@ -18,7 +14,7 @@ header {
     color: #fff;
     text-decoration: none;
     font-family: good-times;
-    font-size: .75rem; 
+    font-size: .95rem; 
 }
 
 .navbar-brand img{
