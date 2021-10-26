@@ -1,6 +1,6 @@
 footer {
-    padding-top: 100px;
-    background: url('/img/lf-footer.jpg') no-repeat center center;
+    
+    background: linear-gradient(to bottom, #cca3925d, #8d6c5d67), url('/img/lf-footer.jpg') no-repeat center center;
     background-size: cover;
     height: 600px;
     font-family: good-times;
@@ -16,9 +16,9 @@ footer {
 }
 
 .blog__action {
-    position: absolute;
+    /* position: relative; */
     top: 35%;
-    right: 10%; 
+    left: 18%; 
 }
 
 .blog__action a {
@@ -29,7 +29,7 @@ footer {
 
 #footer__nav {
   position: relative;
-  top: 20rem;
+  top: 24rem;
   
 }
 

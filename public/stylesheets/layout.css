@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(#99b5c1, #d1c4be);
-    background-repeat: no-repeat;
+    background: linear-gradient(to bottom, #99b5c1, #d1c4be);
     background-size: cover;
+    font-family: good-times;
 }
