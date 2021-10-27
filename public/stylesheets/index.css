@@ -2,11 +2,13 @@
     position: relative;
     height: 120vh;
     color: white;
-    background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67), url('/img/header.jpeg');
+    background-image: url('/img/header.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
   }
+
+  /* linear-gradient(to bottom, #cca3925d, #8d6c5d67),  */
 
 nav {
   position: absolute;
@@ -18,7 +20,7 @@ nav {
 
   .gallery_item {
     position: relative;
-    max-width: 400px;
+    max-width: 350px;
     max-height: auto;
     background-color: #fff;
   }
@@ -34,12 +36,18 @@ nav {
     text-align: center;
   }
   
-  .gallery_item .text .title {
+  .title {
+    font-size: 1.25rem;
     color: #111;
   }
+
+.gallery_item h4 {
+   font-size: .85rem;
+ }
   
-  .gallery_item .text p {
-    margin: 20px 0;
+  .gallery_item p {
+    font-size: .65rem;
+
   }
   
   .gallery_item .text a {

@@ -1,11 +1,13 @@
 footer {
     
-    background: linear-gradient(to bottom, #cca3925d, #8d6c5d67), url('/img/lf-footer.jpg') no-repeat center center;
+    background: url('/img/lf-footer.jpg') no-repeat center center;
     background-size: cover;
     height: 600px;
     font-family: good-times;
     text-align: center;
 }
+
+/* linear-gradient(to bottom, #cca3925d, #8d6c5d67),  */
 
 #footer__logo {
    
@@ -16,7 +18,7 @@ footer {
 }
 
 .blog__action {
-    /* position: relative; */
+    position: relative;
     top: 35%;
     left: 18%; 
 }
