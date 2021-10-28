@@ -17,12 +17,15 @@
 <body class="d-flex">
 
     <div class="cover-container d-flex w-100 h-100 flex-column">
-
-        <%- include('../partials/header.ejs') %>
-        <main class="container-fluid">
-            <%- body %>
-        </main>
-        <%- include('../partials/footer.ejs') %>
+        <div class="bg">
+            <%- include('../partials/header.ejs') %>
+            <main class="container-fluid">
+                <%- body %>
+            </main>
+        </div>
+        <div class="">
+            <%- include('../partials/footer.ejs') %>
+        </div>
     </div>
 
 
