@@ -1,9 +1,26 @@
 .about {
     font-family: 'Korolev';
     font-size: .75rem;
-    max-height: 85vh;
+    max-width: 750px;
+    max-height: auto;
 }
 
 .about__img {
- 
+ max-height: 350px;
+ object-fit: cover;
 }
+
+.about__contact {
+    font-family: 'Korolev';
+    font-size: .75rem;
+    max-width: 750px;
+    max-height: auto;
+    
+}
+
+.about__contact img {
+    color: #000;
+    max-width: 20px;
+    max-height: auto;
+}
+
