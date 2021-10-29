@@ -12,15 +12,13 @@
 
 .about__contact {
     font-family: 'Korolev';
-    font-size: .75rem;
+    font-size: 1rem;
     max-width: 750px;
     max-height: auto;
     
 }
 
 .about__contact img {
-    color: #000;
-    max-width: 20px;
-    max-height: auto;
+    max-height: 50px;
+    width: auto;
 }
-
