@@ -35,14 +35,6 @@ footer {
   
 }
 
-.cloud1 {
-    background-image: url('/img/clouds.png');
-    background-repeat: no-repeat;
-}
-
-.cloud2 {
-    background-image: url('/img/clouds2.png');
-}
 
 .nav-link {
     color: #fff;

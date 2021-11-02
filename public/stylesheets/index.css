@@ -16,8 +16,6 @@ nav {
 }
   /* Swiper Carousel */
 
- 
-
   .gallery_item {
     position: relative;
     max-width: 350px;
@@ -66,9 +64,26 @@ nav {
     border-color: rgb(96, 133, 112);
     color: #fff;
   }
+
+/* Clouds */
+
+.clouds {
+  
+    max-width: auto;
+    max-height: 100%;
+}
+
+.clouds img {
+  max-width: 100%;
+    height: auto;
+}
+
+
+
   
   @media (max-width: 530px) {
     .gallery_item {
       max-width: 350px;
     }
   }
+
