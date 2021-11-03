@@ -18,9 +18,9 @@ footer {
 }
 
 .blog__action {
-    position: relative;
-    top: 35%;
-    left: 18%; 
+    position: absolute;
+    bottom: -115rem;
+    right: 5%;
 }
 
 .blog__action a {
@@ -38,4 +38,14 @@ footer {
 
 .nav-link {
     color: #fff;
+}
+
+.review__carousel {
+  position: absolute;
+  bottom: 7rem;
+  right: 10rem;
+}
+
+.review__author {
+  font-size: .55rem;
 }
