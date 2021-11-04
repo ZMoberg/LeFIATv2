@@ -2,7 +2,7 @@
     position: relative;
     height: 120vh;
     color: white;
-    background-image: url('/img/header.jpeg');
+    background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67), url('/img/header.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -76,8 +76,6 @@ nav {
   max-width: 100%;
     height: auto;
 }
-
-
 
   
   @media (max-width: 530px) {

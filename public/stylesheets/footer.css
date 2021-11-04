@@ -40,12 +40,48 @@ footer {
     color: #fff;
 }
 
+
+.clouds {
+  font-family: "Korolev";
+}
+
+
 .review__carousel {
+  font-weight: bold;
+  font-style: italic;
   position: absolute;
   bottom: 7rem;
   right: 10rem;
 }
 
+.review__body {
+  font-size: .85rem;
+}
+
 .review__author {
   font-size: .55rem;
 }
+
+/* Subscription sign up */
+
+.subscription__wrapper {
+  width: 400px;
+  position: absolute;
+  top: 129rem;
+  right: 12rem;
+}
+
+.subscription__wrapper h3 {
+  font-size: .95rem;
+  font-weight: bold;
+  letter-spacing: .05rem;
+}
+
+.btn {
+  
+  font-weight: bold;
+  color: #fff;
+  background-color: #3f5900;
+  border-radius: 3px;
+}
+
