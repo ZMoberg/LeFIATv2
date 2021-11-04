@@ -16,6 +16,11 @@ nav {
 }
   /* Swiper Carousel */
 
+  .swiper {
+    position: relative;
+    bottom: 10rem;
+  }
+
   .gallery_item {
     position: relative;
     max-width: 350px;
@@ -69,7 +74,7 @@ nav {
 
 .clouds {
     max-width: auto;
-    max-height: 100%;
+    max-height: 25vh;
 }
 
 .clouds img {

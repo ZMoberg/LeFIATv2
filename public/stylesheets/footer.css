@@ -19,8 +19,8 @@ footer {
 
 .blog__action {
     position: absolute;
-    bottom: -115rem;
-    right: 5%;
+    bottom: -100rem;
+    right: 9%;
 }
 
 .blog__action a {
@@ -43,6 +43,8 @@ footer {
 
 .clouds {
   font-family: "Korolev";
+  position: relative;
+  bottom: 6rem;
 }
 
 
@@ -50,7 +52,7 @@ footer {
   font-weight: bold;
   font-style: italic;
   position: absolute;
-  bottom: 7rem;
+  top: 85%;
   right: 10rem;
 }
 
@@ -67,8 +69,8 @@ footer {
 .subscription__wrapper {
   width: 400px;
   position: absolute;
-  top: 129rem;
-  right: 12rem;
+  top: 85%;
+  right: 8rem;
 }
 
 .subscription__wrapper h3 {
