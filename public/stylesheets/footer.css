@@ -18,14 +18,14 @@ footer {
 }
 
 .blog__action {
-    position: absolute;
-    bottom: -100rem;
-    right: 9%;
+    position: relative;
+    top: 13rem;
+    left: 20%;
 }
 
 .blog__action a {
     font-size: 1.35rem;
-    letter-spacing: .25rem;
+    letter-spacing: .15rem;
     color: #000;
 }
 
