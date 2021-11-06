@@ -20,7 +20,8 @@ footer {
 .blog__action {
     position: relative;
     top: 13rem;
-    left: 20%;
+    left: 50%;
+    max-width: 650px;
 }
 
 .blog__action a {

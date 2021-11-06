@@ -11,6 +11,7 @@ const tripsRouter = require('./routes/trips')
 const gearRouter = require('./routes/gear')
 const aboutRouter = require('./routes/about')
 const blogRouter = require('./routes/blog')
+const usersRouter = require('./routes/users')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -32,6 +33,6 @@ app.use('/trips', tripsRouter)
 app.use('/gear', gearRouter)
 app.use('/about', aboutRouter)
 app.use('/blog', blogRouter)
-
+app.use('/users', usersRouter)
 
 app.listen(process.env.PORT || 3000)
