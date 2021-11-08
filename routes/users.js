@@ -1,9 +1,18 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const catchAsync = require('../utils/catchAsync');
+const User = require('../models/user');
+const users = require('../controllers/users');
 
-// All gear route
-router.get('/', (req, res) => {
-    res.render('users')
-})
+router.route('/register')
+    .get(users.renderRegister)
+    .post(catchAsync(users.register));
 
-module.exports = router
+router.route('/login')
+    .get(users.renderLogin)
+    .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), users.login)
+
+router.get('/logout', users.logout)
+
+module.exports = router;
