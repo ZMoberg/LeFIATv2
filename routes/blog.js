@@ -2,42 +2,54 @@ const express = require('express')
 const Article = require('./../models/article')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    const articles = [{
-        title: 'Test Article',
-        createdAt: new Date(),
-        description: 'Test Description'
-    },
-    {
-    title: 'Test Article',
-        createdAt: new Date(),
-        description: 'Test Description'
-    }
-    ]
+router.get('/', async (req, res) => {
+    const articles = await Article.find().sort({ createdAt: 'desc' })
     res.render('blog/index', { articles: articles })
 })
 
 router.get('/new', (req, res) => {
-    res.render('blog/new')
+    res.render('blog/new', { article: new Article() })
 })
 
-router.get('/:id', (req, res) => {
-
+router.get('/edit/:id', async (req, res) => {
+    const article = await Article.findById(req.params.id)
+    res.render('blog/edit', { article: article })
 })
 
-router.post('/', async (req, res) => {
-    const article = new Article({
-        title: req.body.title,
-        description: req.body.description,
-        markdown: req.body.markdown,
-    })
-try {
-   article = await article.save()
-   res.redirect(`/blog/${article.id}`)
-} catch(e) {
-    res.render('blog/new', { article: article})
+router.get('/:slug', async (req, res) => {
+    const article = await Article.findOne({ slug: req.params.slug })
+    if(article == null) res.redirect('/blog')
+    res.render('blog/show', { article: article })
+})
+
+router.post('/', async (req, res, next) => {
+    req.article = new Article()
+    next()
+}, saveArticleAndRedirect('new'))
+
+router.put('/:id', async (req, res, next) => {
+    req.article = await Article.findOneAndUpdate(req.params.id)
+    next()
+}, saveArticleAndRedirect('edit'))
+
+router.delete('/:id', async (req, res) => {
+    await Article.findByIdAndDelete(req.params.id)
+    res.redirect('/blog')
+})
+
+function saveArticleAndRedirect(path) {
+    return async (req, res) => {
+        let article = req.article
+        article.title = req.body.title
+        article.description = req.body.description
+        article.markdown = req.body.markdown
+    try {
+       article = await article.save()
+       res.redirect(`/blog/${article.slug}`)
+    } catch(e) {  
+        res.render(`blog/${path}`, { article: article })
+    }      
+    }
 }
-    
-})
 
 module.exports = router
