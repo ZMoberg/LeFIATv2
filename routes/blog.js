@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
 
     // destination for file
     destination: function (req, file, callback) {
-        callback(null, './uploads/')
+        callback(null, './uploads')
     },
     // add back the extension
     filename: function (req, file, callback) {
