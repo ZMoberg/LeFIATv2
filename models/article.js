@@ -5,6 +5,7 @@ const createDomPurify = require('dompurify')
 const { JSDOM } = require('jsdom')
 const dompurify = createDomPurify(new JSDOM().window)
 
+
 const articleSchema = new mongoose.Schema({
     title: {
         required: true,
@@ -29,8 +30,17 @@ const articleSchema = new mongoose.Schema({
     sanitizedHtml: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
+        data: Buffer,
     }
-}) 
+        
+
+
+   
+}); 
+
 
 articleSchema.pre('validate', function(next) {
     if (this.title) {
