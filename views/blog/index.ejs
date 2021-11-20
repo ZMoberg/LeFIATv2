@@ -40,15 +40,15 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <img src="public/uploads/<%= article.img %>" alt="" class="w-100">
+                    <img src="<%= article.image %>" alt="">
                 </div>
             </div>
             <div class="text-center mt-2">
                 <a href="/blog/<%= article.slug %>">Read More</a>
-                <!-- <a href="/blog/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+                <a href="/blog/edit/<%= article.id %>" class="btn btn-info">Edit</a>
                 <form action="/blog/<%= article.id %>?_method=DELETE " method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger">Delete</button>
-                </form> -->
+                </form>
             </div>
         </div>
     </div>
