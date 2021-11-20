@@ -32,3 +32,10 @@
     font-weight: bold;
     letter-spacing: .05rem;
   }
+
+  /* article card display */
+
+  img {
+    max-height: 350px;
+    width: 100%;
+  }
