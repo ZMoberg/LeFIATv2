@@ -58,8 +58,6 @@ router.get('/:slug', async (req, res) => {
 })
 
 router.post('/', upload.single('image'), async (req, res, next) => {
-console.log(req.file)
-
     req.article = new Article()
     next()
 }, saveArticleAndRedirect('new'))
@@ -82,8 +80,8 @@ function saveArticleAndRedirect(path) {
         article.markdown = req.body.markdown
         article.image = req.file.path
     try {
-       article = await article.save()
-       res.redirect(`/blog/${article.slug}`)
+        article = await article.save()
+        res.redirect(`/blog/${article.slug}`)
     } catch(e) {  
         res.render(`blog/${path}`, { article: article })
     }      

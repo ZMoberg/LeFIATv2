@@ -1,0 +1,18 @@
+<div class="container">
+    <h1 class="mb-4">All Trips</h1>
+    <a href="/trips/new" class="btn btn-success">New Trip</a>
+
+    <% trips.forEach(trip => { %>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title"> <%= trip.title %> </h4>
+            <div class="card-text mb-2"> <%= trip.description %> </div>
+            <a href="trips/<%= trip.slug %> " class="btn btn-primary">Read More</a>
+            <a href="trips/edit/<%= trip.id %> " class="btn btn-info">Edit</a>
+            <form action="/trips/<%= trip.id %>?_method=DELETE" method="POST" class="d-inline">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+</div>
