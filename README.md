@@ -4,7 +4,7 @@
 <div align="center"> <h1>LeFIAT</h1> </div>
 
 A full stack web application built using [Node.js](https://nodejs.org/en/download/) for the outdoor adventure company Le'Fiat. <br><br>
-The application offers a space for users of all backgrounds to come together and experience a piece of the outdoors. By creating an account the user is able to sign up for future guided trips, purchase gear and follow team Le'Fiat's blog for recent articles and updates on upcoming trips.
+The application offers a space for users of all backgrounds to come together and experience a piece of the outdoors. By creating an account the user is able to sign up for newsletters, join future guided trips, purchase gear and follow team Le'Fiat's blog for recent articles and updates on upcoming trips.
 
 ## Getting Started
 
