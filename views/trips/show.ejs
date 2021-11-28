@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container">
 
-    <h1 class="mb-2"><%= trip.title %> </h1>
-    <div class="text-muted mb-2"><%= trip.slug %> </div>
+    <h1 class="mb-2"><%= location.title %> </h1>
+    <div class="text-muted mb-2"><%= location.slug %> </div>
     <a href="/trips" class="btn btn-secondary">All Trips</a>
-    <a href="/trips/edit/<%= trip.id %> " class="btn btn-info">Edit</a>
+    <a href="/trips/edit/<%= location.id %> " class="btn btn-info">Edit</a>
 
     <div class="">
-        <%= article.description %>
+        <%= location.description %>
     </div>
 </div>

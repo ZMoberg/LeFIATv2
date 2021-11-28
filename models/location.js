@@ -1,20 +1,24 @@
 const mongoose = require('mongoose')
 const slugify = require('slugify')
 
-const tripSchema = new mongoose.Schema({
+const locationSchema = new mongoose.Schema({
     title: {
         type: String,
+        required: true
     },
     description: {
         type: String
     },
     slug: {
         type: String,
+        required: true,
         unique: true
+        
     }
-})
+});
 
-tripSchema.pre('validate', function(next) {
+locationSchema.pre('validate', function(next) {
+    console.log("pre validate:", this)
     if (this.title) {
        this.slug = slugify(this.title, {lower: true, strict: true})
     }
@@ -22,4 +26,4 @@ tripSchema.pre('validate', function(next) {
     next()
 })
 
-module.exports = mongoose.model('Trip', tripSchema)
+module.exports = mongoose.model('Location', locationSchema)

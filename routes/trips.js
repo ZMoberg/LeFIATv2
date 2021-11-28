@@ -1,56 +1,64 @@
 const express = require('express')
 const multer = require('multer')
-const Trip = require('./../models/trip')
+const Location = require('./../models/location')
 const router = express.Router()
+
+const upload = multer()
 
 // All trips route
 router.get('/', async (req, res) => {
-    const trips = await Trip.find()
-    res.render('trips/trips', { trips: trips })
+    const locations = await Location.find()
+    console.log(locations);
+    res.render('trips/trips', { locations: locations })
 })
 
 // New trips route
 
 router.get('/new', (req, res) => {
-    res.render('trips/new', { trip: new Trip() })
+    res.render('trips/new', { location: new Location() })
 })
 
 router.get('/edit/:id', async (req, res) => {
-    const trip = await Trip.findById(req.params.id)
-    res.render('trips/edit', { trip: trip })
+    const location = await Location.findById(req.params.id)
+    res.render('trips/edit', { location: location })
 })
 
 router.get('/:slug', async (req, res) => {
-    const trip = await Trip.findOne({ slug: req.params.slug })
-    if(trip == null) res.redirect('/trips')
-    res.render('trips/show', { trip: trip })
+    const location = await Location.findOne({ slug: req.params.slug })
+    console.log(location)
+    if (location == null) return res.redirect('/trips')
+    res.render('trips/show', { location: location })
+   
 })
 
-router.post('/', async (req, res, next) => {
-    req.trip = new Trip()
+router.post('/', upload.none(), async (req, res, next) => {
+    req.location = new Location()
     next()
-}, saveTripAndRedirect('new'))
+}, saveLocationAndRedirect('new'))
 
-router.put('/:id', async (req, res, next) => {
-    req.trip = await Trip.findByIdAndUpdate(req.params.id)
+router.put('/:id', upload.none(), async (req, res, next) => {
+    req.location = await Location.findByIdAndUpdate(req.params.id)
     next()
-}, saveTripAndRedirect('edit'))
+}, saveLocationAndRedirect('edit'))
 
 router.delete('/:id', async (req, res) => {
-    await Trip.findByIdAndDelete(req.params.id)
+    await Location.findByIdAndDelete(req.params.id)
     res.redirect('/trips')
 })
 
-function saveTripAndRedirect(path) {
+function saveLocationAndRedirect(path) {
     return async (req, res) => {
-        let trip = req.trip
-        trip.title = req.body.title,
-        trip.description = req.body.description
+        let location = req.location
+        location.title = req.body.title,
+        location.description = req.body.description
     try {
-        trip = await trip.save()
-        res.redirect(`/trips/${trip.slug}`)
+        console.log("pre save loc:", location, req.body)
+        location = await location.save()
+        console.log("redirect success:", location)
+        res.redirect(`/trips/${location.slug}`)
     } catch(e) {
-        res.render(`trips/${path}`, { trip: trip })
+        console.error("redirect error:", e);
+        res.render(`trips/${path}`, { location: location })
     }
     }
 }

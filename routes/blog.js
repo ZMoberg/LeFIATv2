@@ -54,7 +54,7 @@ router.get('/edit/:id', async (req, res) => {
 router.get('/:slug', async (req, res) => {
     const article = await Article.findOne({ slug: req.params.slug })
     if(article == null) res.redirect('/blog')
-    res.render('blog/show', { article: article })
+    else res.render('blog/show', { article: article })
 })
 
 router.post('/', upload.single('image'), async (req, res, next) => {
