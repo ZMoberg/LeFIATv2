@@ -1,5 +1,5 @@
 
-![Le'Fiat](
+![Le'Fiat](https://github.com/ZMoberg/lefiatV2/blob/master/public/img/lf-home.jpg)
 
 <div align="center"> <h1>LeFIAT</h1> </div>
 
