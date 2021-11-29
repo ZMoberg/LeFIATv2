@@ -1,9 +1,12 @@
+<link rel="stylesheet" href="/stylesheets/trips.css">
+
 <div class="container">
     <h1 class="mb-4">All Trips</h1>
     <a href="/trips/new" class="btn btn-success">New Trip</a>
 
     <% locations.forEach(location => { %>
-    <div class="card mt-4">
+    <div class="trips__card card mt-4">
+        <img src="<%= location.image %>" alt="" class="trips__background img-fluid">
         <div class="card-body">
             <h4 class="card-title"> <%= location.title %> </h4>
             <div class="card-text mb-2"> <%= location.description %> </div>

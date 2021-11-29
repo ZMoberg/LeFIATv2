@@ -3,7 +3,36 @@ const multer = require('multer')
 const Location = require('./../models/location')
 const router = express.Router()
 
-const upload = multer()
+const storage = multer.diskStorage({
+
+    // destination for file
+    destination: function (req, file, callback) {
+        callback(null, './public/uploads')
+    },
+    // add back the extension
+    filename: function (req, file, callback) {
+        callback(null, new Date().toISOString() + file.originalname)
+    },
+})
+
+const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+      cb(null, true);
+    } else {
+      cb(null, false);
+    }
+  };
+
+// upload parameters for multer 
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024*1024*3,
+    },
+    fileFilter: fileFilter
+})
 
 // All trips route
 router.get('/', async (req, res) => {
@@ -31,12 +60,12 @@ router.get('/:slug', async (req, res) => {
    
 })
 
-router.post('/', upload.none(), async (req, res, next) => {
+router.post('/', upload.single('image'), async (req, res, next) => {
     req.location = new Location()
     next()
 }, saveLocationAndRedirect('new'))
 
-router.put('/:id', upload.none(), async (req, res, next) => {
+router.put('/:id', upload.single('image'), async (req, res, next) => {
     req.location = await Location.findByIdAndUpdate(req.params.id)
     next()
 }, saveLocationAndRedirect('edit'))
@@ -51,6 +80,7 @@ function saveLocationAndRedirect(path) {
         let location = req.location
         location.title = req.body.title,
         location.description = req.body.description
+        location.image = req.file.path
     try {
         console.log("pre save loc:", location, req.body)
         location = await location.save()

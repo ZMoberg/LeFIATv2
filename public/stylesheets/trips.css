@@ -1,10 +1,8 @@
-.trips__card {
-    max-height: 250px;
-    height: 200px;
-    background-image: url('/public/img/lakesideovernight.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+.trips__background {
+    max-height: 350px;
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
 }
 
 

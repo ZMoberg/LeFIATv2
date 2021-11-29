@@ -14,6 +14,10 @@ const locationSchema = new mongoose.Schema({
         required: true,
         unique: true
         
+    },
+    image: {
+        type: String,
+        data: Buffer
     }
 });
 
