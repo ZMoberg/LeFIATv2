@@ -19,7 +19,11 @@ const locationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    length: {
+    days: {
+        type: String,
+        required: true
+    },
+    nights: {
         type: String,
         required: true
     },
