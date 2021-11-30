@@ -80,6 +80,8 @@ function saveLocationAndRedirect(path) {
         let location = req.location
         location.title = req.body.title,
         location.description = req.body.description
+        location.price = req.body.price
+        location.length = req.body.length
         location.image = req.file.path
     try {
         console.log("pre save loc:", location, req.body)

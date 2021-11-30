@@ -1,21 +1,31 @@
 <link rel="stylesheet" href="/stylesheets/trips.css">
 
 <div class="container">
-    <h1 class="mb-4">All Trips</h1>
-    <a href="/trips/new" class="btn btn-success">New Trip</a>
+    <h1 class="my-4 text-center ">Choose You Adventure</h1>
+    <!-- <a href="/trips/new" class="btn btn-success">New Trip</a> -->
+
 
     <% locations.forEach(location => { %>
-    <div class="trips__card card mt-4">
-        <img src="<%= location.image %>" alt="" class="trips__background img-fluid">
-        <div class="card-body">
-            <h4 class="card-title"> <%= location.title %> </h4>
-            <div class="card-text mb-2"> <%= location.description %> </div>
-            <a href="/trips/<%= location.slug %> " class="btn btn-primary">Read More</a>
-            <a href="trips/edit/<%= location.id %> " class="btn btn-info">Edit</a>
-            <form action="/trips/<%= location.id %>?_method=DELETE" method="POST" class="d-inline">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+    <a href="/trips/<%= location.slug %>">
+        <div class="trips__card card mt-4">
+            <img src="<%= location.image %>" alt="" class="trips__background img-fluid">
+            <div class="card-body">
+                <div class="trip__info">
+                    <h4 class="card-title"> <%= location.title %> </h4>
+                    <!-- <div class="card-text mb-2"> <%= location.description %> </div> -->
+                    <div class="card-text days">
+                        <span class="card-text"><%= location.length %> days / </span>
+                        <span class="card-text"> $ <%= location.price %> </span>
+                    </div>
+                </div>
+                <!-- <a href="/trips/<%= location.slug %> " class="btn btn-primary">Read More</a>
+                <a href="trips/edit/<%= location.id %> " class="btn btn-info">Edit</a>
+                <form action="/trips/<%= location.id %>?_method=DELETE" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form> -->
+            </div>
         </div>
-    </div>
+    </a>
     <% }) %>
+
 </div>

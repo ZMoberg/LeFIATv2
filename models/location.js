@@ -15,6 +15,14 @@ const locationSchema = new mongoose.Schema({
         unique: true
         
     },
+    price: {
+        type: String,
+        required: true
+    },
+    length: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         data: Buffer

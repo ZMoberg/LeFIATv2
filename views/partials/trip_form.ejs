@@ -1,14 +1,26 @@
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="title">Title</label>
     <input type="text" name="title" id="title" class="form-control" value="<%= location.title %>">
 </div>
 
-<div class="form-group">
+<div class="form-group mb-3">
+    <span class="input-group-text">$</span>
+    <input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)">
+    <span class="input-group-text">.00</span>
+</div>
+
+<div class="form-group mb-3">
+    <span class="form-group-text">Number of days:</span>
+    <input type="text" name="length" id="length" class="form-control" aria-label="Number of days">
+    <span class="input-group-text"> days</span>
+</div>
+
+<div class="form-group mb-3">
     <label for="description">Description</label>
     <textarea name="description" id="description" class="form-control" required><%= location.description %></textarea>
 </div>
 
-<div class="form-group">
+<div class="form-group mb-3">
     <label for="image">Upload Image</label>
     <input type="file" name="image" id="image" class="form-control-file">
 </div>

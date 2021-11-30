@@ -1,8 +1,14 @@
 .trips__background {
     max-height: 350px;
     height: 250px;
-    width: 100%;
+    width: auto;
     object-fit: cover;
 }
 
+.trip__info {
+    color: #fff;
+    position: absolute;
+    bottom: 15%;
+    right: 2.5%;
+}
 
