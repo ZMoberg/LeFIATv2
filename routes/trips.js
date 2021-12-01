@@ -37,7 +37,6 @@ const upload = multer({
 // All trips route
 router.get('/', async (req, res) => {
     const locations = await Location.find()
-    console.log(locations);
     res.render('trips/trips', { locations: locations })
 })
 
@@ -54,10 +53,8 @@ router.get('/edit/:id', async (req, res) => {
 
 router.get('/:slug', async (req, res) => {
     const location = await Location.findOne({ slug: req.params.slug })
-    console.log(location)
     if (location == null) return res.redirect('/trips')
     res.render('trips/show', { location: location })
-   
 })
 
 router.post('/', upload.single('image'), async (req, res, next) => {
@@ -84,13 +81,10 @@ function saveLocationAndRedirect(path) {
         location.days = req.body.days
         location.nights = req.body.nights
         location.image = req.file.path
-    try {
-        console.log("pre save loc:", location, req.body)
-        location = await location.save()
-        console.log("redirect success:", location)
+    try {    
+        location = await location.save()  
         res.redirect(`/trips/${location.slug}`)
     } catch(e) {
-        console.error("redirect error:", e);
         res.render(`trips/${path}`, { location: location })
     }
     }

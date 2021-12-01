@@ -1,11 +1,21 @@
-<div class="container">
+<link rel="stylesheet" href="/stylesheets/trips_show.css">
 
-    <h1 class="mb-2"><%= location.title %> </h1>
-    <div class="text-muted mb-2"><%= location.slug %> </div>
-    <a href="/trips" class="btn btn-secondary">All Trips</a>
-    <a href="/trips/edit/<%= location.id %> " class="btn btn-info">Edit</a>
+<div class="container mt-4">
 
-    <div class="">
+    <div class="row trip__img mb-3">
+        <img src="/<%= location.image %> " alt="" class="img-fluid trip__img">
+    </div>
+
+
+    <h1 class="my-2 text-center"><%= location.title %> </h1>
+    <div class="text-muted my-5"><%= location.slug %> </div>
+
+
+    <div class="mb-5">
         <%= location.description %>
     </div>
-</div>
+    <div class="">
+        <a href="/trips" class="text-decoration-none all_trips">
+            <<< Back To All Trips </a> </div> <!-- <a href="/trips/edit/<%= location.id %> " class="btn btn-info">Edit
+        </a> -->
+    </div>

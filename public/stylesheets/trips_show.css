@@ -1,0 +1,11 @@
+.trip__img {
+  max-height: 550px;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+.all_trips {
+  color: #000;
+  letter-spacing: .15rem;
+}
