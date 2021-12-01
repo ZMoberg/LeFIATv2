@@ -18,9 +18,14 @@
         </div>
     </div>
 
-    <h1 class="trips_title text-center ">Choose You Adventure</h1>
+    <div class="row trips_title ">
+        <span class="col-1 text-start"><img src="/public/img/down-arrow.png" alt=""></span>
+        <h1 class=" text-center col-10">Choose You Adventure</h1>
+        <span class="col-1 text-end"><img src="/public/img/down-arrow.png" alt=""></span>
+    </div>
 
-    <a href="/trips/new" class="btn btn-success">New Trip</a>
+
+    <!-- <a href="/trips/new" class="btn btn-success">New Trip</a> -->
 
 
     <% locations.forEach(location => { %>
@@ -28,10 +33,10 @@
         <div class="trips__card card my-5">
             <img src="<%= location.image %>" alt="" class="trips__background  card-img">
 
-            <div class="trip__info">
+            <div class="trip__info text-end">
                 <h4 class="card-title"> <%= location.title %> </h4>
                 <!-- <div class="card-text mb-2"> <%= location.description %> </div> -->
-                <div class="card-text days">
+                <div class="card-text days ">
                     <span class="card-text"><%= location.days %> days / </span>
                     <span class="card-text"> <%= location.nights %> nights</span>
                     <span class="card-text text-end"> $ <%= location.price %> </span>

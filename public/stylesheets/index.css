@@ -1,6 +1,6 @@
  .landing__page {
     position: relative;
-    height: 120vh;
+    height: 100vh;
     color: white;
     background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67), url('/img/header.jpeg');
     background-size: cover;
@@ -12,8 +12,15 @@
 
 nav {
   position: absolute;
-  top: -57rem;
+  top: -44rem;
 }
+
+  /* newsletter sign up */
+
+#sign_up {
+  top: 48%;
+}
+
   /* Swiper Carousel */
 
   .swiper {

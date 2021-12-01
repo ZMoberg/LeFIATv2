@@ -11,17 +11,16 @@
 
   nav {
     position: absolute;
-    top: -39rem;
+    top: -35rem;
+    
   }
-
-  
 
   /* Newsletter signup */
 
   .newsletter__wrapper {
     width: 400px;
     position: absolute;
-    top: 25%;
+    top: 35%;
     right: 8rem;
   }
   

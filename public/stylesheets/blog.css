@@ -9,21 +9,20 @@
   }
 
   nav {
-    position: absolute;
-    top: -39rem;
-  }
-
-  .blog_title {
     position: relative;
-    top: -3rem;
+    top: -35rem;
   }
 
+  .article_title {
+    position: relative;
+    bottom: 2rem;
+  }
   /* Newsletter signup */
 
   .newsletter__wrapper {
     width: 400px;
     position: absolute;
-    top: 25%;
+    top: 35%;
     right: 8rem;
   }
   

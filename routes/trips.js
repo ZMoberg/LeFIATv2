@@ -80,6 +80,7 @@ function saveLocationAndRedirect(path) {
         location.price = req.body.price
         location.days = req.body.days
         location.nights = req.body.nights
+        location.date = req.body.date
         location.image = req.file.path
     try {    
         location = await location.save()  
