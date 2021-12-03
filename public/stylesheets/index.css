@@ -1,6 +1,6 @@
  .landing__page {
     position: relative;
-    height: 100vh;
+    height: 115vh;
     color: white;
     background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67), url('/img/header.jpeg');
     background-size: cover;
@@ -11,8 +11,7 @@
   /* linear-gradient(to bottom, #cca3925d, #8d6c5d67),  */
 
 nav {
-  position: absolute;
-  top: -44rem;
+  top: -51rem;
 }
 
   /* newsletter sign up */
@@ -32,18 +31,23 @@ nav {
     position: relative;
     max-width: 350px;
     max-height: auto;
+    height: 450px;
     background-color: #fff;
+    
   }
   
   .gallery_item img {
-    max-width: 100%;
-    height: auto;
-  
+    width: 100%;
+    height: 50%;
+    max-height: 250px;
+    object-fit: cover;
   }
   
   .gallery_item .text {
+    position: relative;
     padding: 20px 0;
     text-align: center;
+    top: -3%;
   }
   
   .title {
