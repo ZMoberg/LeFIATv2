@@ -1,71 +1,87 @@
-const express = require("express");
-const passport = require("passport");
-const { check, validationResult } = require("express-validator");
-
-const { login, logout, signup, me } = require("../controllers/users");
-
+const express = require('express');
 const router = express.Router();
+const User = require("./../models/user");
+const bcrypt = require('bcrypt');
 
-router.get('/', (req, res) => {
-  res.render('users/login')
+//login handle
+router.get('/', (req,res) => {
+    res.render('users/login');
 })
 
-// /api/auth/signup
-router.post(
-  "/register",
-  [
-    check("name")
-      .isLength({ min: 3 })
-      .withMessage("the name must have minimum length of 3")
-      .trim(),
+router.get('/register',(req,res)=>{
+    res.render('register')
+    })
 
-    check("email")
-      .isEmail()
-      .withMessage("invalid email address")
-      .normalizeEmail(),
+//Register handle
+router.post('/login',(req,res)=>{
+    passport.authenticate('local',{
+        successRedirect : '/',
+        failureRedirect : '/users/login',
+        })(req,res,next);
+  })
 
-    check("password")
-      .isLength({ min: 8, max: 15 })
-      .withMessage("your password should have min and max length between 8-15")
-      .matches(/\d/)
-      .withMessage("your password should have at least one number")
-      .matches(/[!@#$%^&*(),.?":{}|<>]/)
-      .withMessage("your password should have at least one sepcial character"),
-
-    check("confirmPassword").custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error("confirm password does not match");
-      }
-      return true;
-    }),
-  ],
-  (req, res, next) => {
-    const error = validationResult(req).formatWith(({ msg }) => msg);
-
-    const hasError = !error.isEmpty();
-
-    if (hasError) {
-      res.status(422).json({ error: error.array() });
-    } else {
-      next();
+  //register post handle
+  router.post('/register',(req,res)=>{
+    const {name,email, password, password2} = req.body;
+    let errors = [];
+    console.log(' Name ' + name+ ' email :' + email+ ' pass:' + password);
+    if(!name || !email || !password || !password2) {
+        errors.push({msg : "Please fill in all fields"})
     }
-  },
-  signup
-);
+    //check if match
+    if(password !== password2) {
+        errors.push({msg : "passwords dont match"});
+    }
+    
+    //check if password is more than 6 characters
+    if(password.length < 6 ) {
+        errors.push({msg : 'password atleast 6 characters'})
+    }
+    if(errors.length > 0 ) {
+    res.render('register', {
+        errors : errors,
+        name : name,
+        email : email,
+        password : password,
+        password2 : password2})
+     } else {
+        //validation passed
+       User.findOne({email : email}).exec((err,user)=>{
+        console.log(user);   
+        if(user) {
+            errors.push({msg: 'email already registered'});
+            res.render('register',{errors,name,email,password,password2})  
+           } else {
+            const newUser = new User({
+                name : name,
+                email : email,
+                password : password
+            });
+    
+            //hash password
+            bcrypt.genSalt(10,(err,salt)=> 
+            bcrypt.hash(newUser.password,salt,
+                (err,hash)=> {
+                    if(err) throw err;
+                        //save pass to hash
+                        newUser.password = hash;
+                    //save user
+                    newUser.save()
+                    .then((value)=>{
+                        console.log(value)
+                    res.redirect('/users/login');
+                    })
+                    .catch(value=> console.log(value));
+                      
+                }));
+             }
+       })
+    }
+    })
 
-// /api/auth/login
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    failureMessage: "Invalid username or password",
-  }),
-  login
-);
+//logout
+router.get('/logout',(req,res)=>{
+ })
 
-// /api/auth/logout
-router.get("/logout", logout);
 
-// /api/auth/me
-router.get("/me", me);
-
-module.exports = router;
+module.exports  = router;

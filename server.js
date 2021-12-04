@@ -4,15 +4,14 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express')
 const path = require('path');
-
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
-// const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const passport = require('passport');
-// const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
+require("./controllers/passport")(passport)
 const User = require('./models/user');
-// const helmet = require('helmet');
+
 const mongoSanitize = require('express-mongo-sanitize');
 const expressLayouts = require('express-ejs-layouts')
 const ExpressError = require('./utils/ExpressError');
@@ -80,73 +79,38 @@ mongoose.connect(process.env.DATABASE_URL, {
     }
 
     
-
-
-
-mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-});
-    
     app.use(session(sessionConfig));
-    // app.use(flash());
-    // app.use(helmet());
-
-    // const scriptSrcUrls = [
-    //     "https://stackpath.bootstrapcdn.com/",
-    //     "https://kit.fontawesome.com/",
-    //     "https://cdnjs.cloudflare.com/",
-    //     "https://cdn.jsdelivr.net",
-    //     "https://unpkg.com/swiper@7/swiper-bundle.min.css",
-    // ];
-    // const styleSrcUrls = [
-    //     "https://kit-free.fontawesome.com/",
-    //     "https://stackpath.bootstrapcdn.com/",
-    //     "https://use.fontawesome.com/",
-    //     "https://unpkg.com/swiper@7/swiper-bundle.min.css"
-        
-    // ];
-  
-    // const fontSrcUrls = [];
-    // app.use(
-    //     helmet.contentSecurityPolicy({
-    //         directives: {
-    //             defaultSrc: [],
-    //             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-    //             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-    //             workerSrc: ["'self'", "blob:"],
-    //             objectSrc: [],
-    //             imgSrc: [
-    //                 "'self'",
-    //                 "blob:",
-    //                 "data:",
-    //                 "https://res.cloudinary.com/zmoberg/", 
-    //                 "https://images.unsplash.com/",
-    //             ],
-    //             fontSrc: ["'self'", ...fontSrcUrls],
-    //         },
-    //     })
-    // );
 
     app.use(passport.initialize());
     app.use(passport.session());
   
     
-    // const LocalStrategy = require('passport-local').Strategy;
-    // passport.use(new LocalStrategy(User.authenticate()));
-    
-    
-    
-    // app.use((req, res, next) => {
-    //     res.locals.currentUser = req.user;
-    //     res.locals.success = req.flash('success');
-    //     res.locals.error = req.flash('error');
-    //     next();
-    // })
-    
+    passport.use(new LocalStrategy(
+        function(username, password, done) {
+          User.findOne({ username: username }, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) {
+              return done(null, false, { message: 'Incorrect username.' });
+            }
+            if (!user.validPassword(password)) {
+              return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+          });
+        }
+      ));
 
+      passport.serializeUser(function(user, done) {
+        done(null, user.id);
+      });
+      
+      passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+          done(err, user);
+        });
+      });
+    
+    
 app.use('/', indexRouter)
 app.use('/trips', tripsRouter)
 app.use('/gear', gearRouter)
@@ -154,9 +118,6 @@ app.use('/about', aboutRouter)
 app.use('/blog', blogRouter)
 app.use('/users', usersRouter)
 
-// app.all('*', (req, res, next) => {
-//     next(new ExpressError('Page Not Found', 404))
-// })
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
