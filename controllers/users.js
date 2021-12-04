@@ -1,38 +1,43 @@
-const User = require('../models/user');
+const User = require("../models/user");
 
-module.exports.renderRegister = (req, res) => {
-    res.render('users/register');
-}
+const login = (req, res) => {
+  return res.status(200).json({ msg: "user sucessfully logged in" });
+};
 
-module.exports.register = async (req, res, next) => {
-    try {
-        const { email, username, password } = req.body;
-        const user = new User({ email, username });
-        const registeredUser = await User.register(user, password);
-        req.login(registeredUser, err => {
-            if (err) return next(err);
-            req.flash('success', 'Welcome to LeFIAT!');
-            res.redirect('/');
-        })
-    } catch (e) {
-        req.flash('error', e.message);
-        res.redirect('register');
+const signup = async (req, res) => {
+  const { email, name, password } = req.body;
+  try {
+    let user = await User.findOne({ email });
+    if (!user) {
+      let newUser = new User({ name, email, password });
+      await newUser.save();
+      return res.status(200).json({ msg: "user successfully created" });
     }
-}
+    return res
+      .status(422)
+      .json({ errors: ["the user with this email already exists"] });
+  } catch (error) {
+    console.error(error);
 
-module.exports.renderLogin = (req, res) => {
-    res.render('users/login');
-}
+    return res.status(500).json({ errors: ["some error occured"] });
+  }
+};
 
-module.exports.login = (req, res) => {
-    req.flash('success', 'welcome back!');
-    const redirectUrl = req.session.returnTo || '/';
-    delete req.session.returnTo;
-    res.redirect(redirectUrl);
-}
+const logout = (req, res) => {
+  req.logout();
+  res.status(200).json({ msg: "logged out" });
+};
 
-module.exports.logout = (req, res) => {
-    req.logout();
-    req.flash('success', "Goodbye!");
-    res.redirect('/');
-}
+const me = (req, res) => {
+  if (!req.user)
+    return res.status(403).json({ errors: ["login to get the info"] });
+
+  return res.status(200).json({ user: req.user });
+};
+
+module.exports = {
+  login,
+  signup,
+  logout,
+  me,
+};

@@ -7,10 +7,10 @@ const path = require('path');
 
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
-const flash = require('connect-flash');
+// const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const passport = require('passport');
-const LocalStrategy = require('passport-local');
+// const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/user');
 // const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
@@ -91,7 +91,7 @@ mongoose.connect(dbUrl, {
 });
     
     app.use(session(sessionConfig));
-    app.use(flash());
+    // app.use(flash());
     // app.use(helmet());
 
     // const scriptSrcUrls = [
@@ -132,17 +132,19 @@ mongoose.connect(dbUrl, {
 
     app.use(passport.initialize());
     app.use(passport.session());
-    passport.use(new LocalStrategy(User.authenticate()));
+  
     
-    passport.serializeUser(User.serializeUser());
-    passport.deserializeUser(User.deserializeUser());
+    // const LocalStrategy = require('passport-local').Strategy;
+    // passport.use(new LocalStrategy(User.authenticate()));
     
-    app.use((req, res, next) => {
-        res.locals.currentUser = req.user;
-        res.locals.success = req.flash('success');
-        res.locals.error = req.flash('error');
-        next();
-    })
+    
+    
+    // app.use((req, res, next) => {
+    //     res.locals.currentUser = req.user;
+    //     res.locals.success = req.flash('success');
+    //     res.locals.error = req.flash('error');
+    //     next();
+    // })
     
 
 app.use('/', indexRouter)
