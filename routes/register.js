@@ -9,22 +9,22 @@ router.get('/', (req, res) => {
     res.render('users/register')
 })
 
-router.post('/register', (req,res, next) => {
-    User.register(new User({
+router.post('/', async (req,res, next) => {
+    try {
+        User.register( new User({
         username: req.body.username
-        
       }),
-      console.log('username', req.body.username),
-      req.body.password, (err, user) => {
+        req.body.password, (err, user) => {
+          console.log(user)
         if (err) {
-    
+            console.log(err)
           res.statusCode = 500;
           res.setHeader('Content-Type', 'application/json');
           res.json({
             err: err
           });
         } else {
-          passport.authenticate('local')(req, res, () => {
+             passport.authenticate('local')(req, res, () => {
             User.findOne({
               username: req.body.username
             }, (err, person) => {
@@ -38,7 +38,9 @@ router.post('/register', (req,res, next) => {
           })
         }
       })
-    
+    } catch(e) {
+        console.log("error", e)
+    }
 })
 
 
