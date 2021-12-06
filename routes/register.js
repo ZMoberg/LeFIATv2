@@ -38,8 +38,8 @@ router.post('/', async (req,res, next) => {
           })
         }
       })
-    } catch(e) {
-        console.log("error", e)
+    } catch(err) {
+        console.log("error", err)
     }
 })
 

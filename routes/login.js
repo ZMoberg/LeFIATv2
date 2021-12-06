@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     res.render('users/login')
 })
 
-router.post('/login', passport.authenticate('local'), (req, res) => {
+router.post('/', passport.authenticate('local'), (req, res) => {
     User.findOne({
       username: req.body.username
     }, (err, person) => {
