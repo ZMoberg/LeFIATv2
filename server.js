@@ -9,7 +9,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-require("./controllers/passport")(passport)
+// require("./controllers/passport")(passport)
 const User = require('./models/user');
 
 const mongoSanitize = require('express-mongo-sanitize');
@@ -22,7 +22,10 @@ const tripsRouter = require('./routes/trips')
 const gearRouter = require('./routes/gear')
 const aboutRouter = require('./routes/about')
 const blogRouter = require('./routes/blog')
-const usersRouter = require('./routes/users')
+const loginRouter = require('./routes/login')
+const logoutRouter = require('./routes/logout')
+const registerRouter = require('./routes/register')
+
 
 
 
@@ -78,37 +81,39 @@ mongoose.connect(process.env.DATABASE_URL, {
         }
     }
 
-    
+
     app.use(session(sessionConfig));
 
     app.use(passport.initialize());
     app.use(passport.session());
   
-    
-    passport.use(new LocalStrategy(
-        function(username, password, done) {
-          User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-              return done(null, false, { message: 'Incorrect username.' });
-            }
-            if (!user.validPassword(password)) {
-              return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-          });
-        }
-      ));
+    passport.use(new LocalStrategy(User.authenticate()));
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
+    // passport.use(new LocalStrategy(
+    //     function(username, password, done) {
+    //       User.findOne({ username: username }, function (err, user) {
+    //         if (err) { return done(err); }
+    //         if (!user) {
+    //           return done(null, false, { message: 'Incorrect username.' });
+    //         }
+    //         if (!user.validPassword(password)) {
+    //           return done(null, false, { message: 'Incorrect password.' });
+    //         }
+    //         return done(null, user);
+    //       });
+    //     }
+    //   ));
 
-      passport.serializeUser(function(user, done) {
-        done(null, user.id);
-      });
+    //   passport.serializeUser(function(user, done) {
+    //     done(null, user.id);
+    //   });
       
-      passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-          done(err, user);
-        });
-      });
+    //   passport.deserializeUser(function(id, done) {
+    //     User.findById(id, function(err, user) {
+    //       done(err, user);
+    //     });
+    //   });
     
     
 app.use('/', indexRouter)
@@ -116,7 +121,10 @@ app.use('/trips', tripsRouter)
 app.use('/gear', gearRouter)
 app.use('/about', aboutRouter)
 app.use('/blog', blogRouter)
-app.use('/users', usersRouter)
+app.use('/login', loginRouter)
+app.use('/logout', logoutRouter)
+app.use('/register', registerRouter)
+
 
 
 app.use((err, req, res, next) => {
