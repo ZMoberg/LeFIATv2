@@ -1,5 +1,6 @@
 const passport = require('passport');
 const User = require("../models/user")
+const { isLoggedIn, currentUser, isAdmin } = require('../controllers/permission')
 
 
 const express = require('express')
