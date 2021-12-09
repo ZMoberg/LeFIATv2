@@ -13,7 +13,8 @@ router.get('/', (req, res) => {
 router.post('/', async (req,res, next) => {
     try {
         User.register( new User({
-        username: req.body.username
+        username: req.body.username,
+        email: req.body.email
       }),
         req.body.password, (err, user) => {
           console.log(user)
@@ -30,12 +31,14 @@ router.post('/', async (req,res, next) => {
               username: req.body.username
             }, (err, person) => {
               res.statusCode = 200;
-              res.setHeader('Content-Type', 'application/json');
+            
               res.json({
                 success: true,
                 status: 'Registration Successful!',
               });
+              
             });
+            
           })
         }
       })

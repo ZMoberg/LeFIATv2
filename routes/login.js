@@ -1,27 +1,53 @@
 const passport = require('passport')
-const { isLoggedIn, currentUser, isAdmin } = require('../controllers/permission')
+// const { isLoggedIn, currentUser, isAdmin } = require('../controllers/permission')
 const User = require("../models/user")
 
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.render('users/login')
-})
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated()) return next();
+	res.redirect('users/login');
+}
 
-router.post('/', passport.authenticate('local'), (req, res) => {
-    User.findOne({
-      username: req.body.username
-    }, (err, person) => {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/json');
-      res.json({
-        success: true,
-        status: 'You are successfully logged in!'
-      });
-    })
+
+function isLoggedOut(req, res, next) {
+	if (!req.isAuthenticated()) return next();
+	res.redirect('/');
+}
+
+// router.get('/', isLoggedIn, (req, res) => {
+//     res.render('users/login')
+// })
+
+router.get('/', isLoggedIn, (req, res) => {
+	const response = {
+		title: "Login",
+		error: req.query.error
+	}
+
+	res.render('users/login', response);
+});
+
+router.get('/login', isLoggedOut, (req, res) => {
+	const response = {
+		title: "Login",
+		error: req.query.error
+	}
+
+	res.render('login', response);
+});
+
+  router.post('/', passport.authenticate('local', {
+    successRedirect:'/',
+    failureRedirect: '/login?error=true'
+  }))
+  
+  router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/home');
   });
-
+  
   router.get('/api/users/me',
   passport.authenticate('basic', { session: false }),
   function(req, res) {

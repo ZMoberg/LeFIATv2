@@ -1,13 +1,13 @@
-const isLoggedIn = (req, res, next) => {
+// const isLoggedIn = (req, res, next) => {
 
-}
+// }
 
-const currentUser = (req, res, next) => {
+// const currentUser = (req, res, next) => {
 
-}
+// }
 
-const isAdmin = () => {
+// const isAdmin = () => {
 
-}
+// }
 
-module.exports = { isLoggedIn, currentUser, isAdmin }
+// module.exports = { isLoggedIn, currentUser, isAdmin }

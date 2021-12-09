@@ -23,11 +23,8 @@ const gearRouter = require('./routes/gear')
 const aboutRouter = require('./routes/about')
 const blogRouter = require('./routes/blog')
 const loginRouter = require('./routes/login')
-const logoutRouter = require('./routes/logout')
+const logoutRouter = require('./routes/login')
 const registerRouter = require('./routes/register')
-
-
-
 
 const app = express()
 
@@ -91,30 +88,11 @@ mongoose.connect(process.env.DATABASE_URL, {
     passport.serializeUser(User.serializeUser());
     passport.deserializeUser(User.deserializeUser());
     passport.use(new LocalStrategy(User.authenticate()));
-    // passport.use(new LocalStrategy(
-    //     function(username, password, done) {
-    //       User.findOne({ username: username }, function (err, user) {
-    //         if (err) { return done(err); }
-    //         if (!user) {
-    //           return done(null, false, { message: 'Incorrect username.' });
-    //         }
-    //         if (!user.validPassword(password)) {
-    //           return done(null, false, { message: 'Incorrect password.' });
-    //         }
-    //         return done(null, user);
-    //       });
-    //     }
-    //   ));
 
-    //   passport.serializeUser(function(user, done) {
-    //     done(null, user.id);
-    //   });
-      
-    //   passport.deserializeUser(function(id, done) {
-    //     User.findById(id, function(err, user) {
-    //       done(err, user);
-    //     });
-    //   });
+    app.use((req, res, next) => {
+        res.locals.currentUser = req.user;
+        next();
+    })
     
     
 app.use('/', indexRouter)

@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="w-100"><img src="<%= product.image %>" alt=""> </div>
+    <h1 class="mb-2"><%= product.title %> </h1>
+
+    <div class="text-muted mb-2">
+        <%- product.createdAt.toLocaleDateString() %>
+    </div>
+    <div class="text-muted mb-2"><%= article.slug %></div>
+    <a href="/gear" class="btn btn-secondary">All Gear</a>
+    <a href="/gear/edit/<%= product.id %> " class="btn btn-info">Edit</a>
+
+
+</div>
