@@ -1,3 +1,4 @@
+const { date } = require('joi')
 const mongoose = require('mongoose')
 const slugify = require('slugify')
 
@@ -15,8 +16,12 @@ const productSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    createdAt: {
+        type: Date,
+        default:Date.now
+    },
     image: {
-        String,
+        type: String,
         data: Buffer
     }
 })

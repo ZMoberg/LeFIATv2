@@ -1,8 +1,6 @@
-const multer = require('multer')
-
-const Product = require('./../models/product')
-
 const express = require('express')
+const multer = require('multer')
+const Product = require('./../models/product')
 const router = express.Router()
 
 const storage = multer.diskStorage({
@@ -26,6 +24,8 @@ const fileFilter = (req, file, cb) => {
     }
   };
 
+  // upload parameters for multer 
+
   const upload = multer({
     storage: storage,
     limits: {
@@ -45,21 +45,23 @@ router.get('/new', (req, res) => {
 
 router.get('/edit/:id', async (req, res) => {
     const product = await Product.findById(req.params.id)
+    console.log(product)
     res.render('gear/edit', { product: product })
 })
 
 router.get('/:slug', async (req, res) => {
     const product = await Product.findOne({ slug: req.params.slug })
+    console.log(product)
     if(product == null) res.redirect('/gear')
     else res.render('gear/show', { product: product })
 })
 
-router.post('/', upload.array('image', 12), async (req, res, next) => {
-    req.product = new Product()
+router.post('/', upload.single('image'), async (req, res, next) => {
+    req.product = new Product()  
     next()
 }, saveProductAndRedirect('new'))
 
-router.put('/:id', upload.array('image', 12), async (req, res, next) => {
+router.put('/:id', upload.single('image'), async (req, res, next) => {
     req.product = await Product.findOneAndUpdate(req.params.id)
     next()
 }, saveProductAndRedirect('edit'))
@@ -70,16 +72,20 @@ router.delete('/:id', async (req, res) => {
 })
 
 function saveProductAndRedirect(path) {
+    console.log(path)
     return async (req, res) => {
         let product = req.product
         product.title = req.body.title
         product.description = req.body.description
         product.image = req.file.path
+        console.log(path)
     try {
-        article = await product.save()
+        product = await product.save()
         res.redirect(`/gear/${product.slug}`)
+        console.log(path, req.product)
     } catch(e) {  
         res.render(`gear/${path}`, { product: product })
+        console.log(path,req.product)
     }      
     }
 }

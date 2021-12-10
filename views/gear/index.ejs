@@ -33,5 +33,31 @@
 
     <a href="/gear/new" class="btn btn-success mx-3">New Item</a>
 
-
+    <% products.forEach(product =>  { %>
+    <div class="blog_article mt-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <h4 class="card-title"> <%= product.title %> </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%- product.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <%= product.description %>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="<%= product.image %>" alt="" class="img-fluid w-100">
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <a href="/gear/<%= product.slug %>">Read More</a>
+                <!-- <a href="/gear/edit/<%= product.id %>" class="btn btn-info">Edit</a>
+                    <form action="/gear/<%= product.id %>?_method=DELETE " method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form> -->
+            </div>
+        </div>
+    </div>
+    <% }) %>
 </div>
