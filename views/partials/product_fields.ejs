@@ -4,6 +4,18 @@
 </div>
 
 <div class="form-group">
+    <label for="price">Price</label>
+    <input type="number" min="1" step="0.01" name="price" id="price" class="form-control"
+        required><%= product.price %></input>
+</div>
+
+<div class="form-group">
+    <label for="weight">Weight</label>
+    <input type="number" min="1" step="0.01" name="weight" id="weight" class="form-control"
+        required><%= product.weight %></input>
+</div>
+
+<div class="form-group">
     <label for="description">Description</label>
     <textarea name="description" id="description" class="form-control" required><%= product.description %></textarea>
 </div>

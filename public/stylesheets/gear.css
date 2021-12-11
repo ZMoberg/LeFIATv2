@@ -13,7 +13,7 @@
     top: -38rem;
   }
 
-  .article_title {
+  .gear_title {
     position: relative;
     bottom: 2rem;
   }
@@ -30,4 +30,8 @@
     font-size: .95rem;
     font-weight: bold;
     letter-spacing: .05rem;
+  }
+
+  .item_wrapper a {
+    text-decoration: none;
   }

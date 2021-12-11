@@ -71,21 +71,21 @@ router.delete('/:id', async (req, res) => {
     res.redirect('/gear')
 })
 
-function saveProductAndRedirect(path) {
-    console.log(path)
+function saveProductAndRedirect(path) {  
     return async (req, res) => {
         let product = req.product
         product.title = req.body.title
         product.description = req.body.description
+        product.price = req.body.price
+        product.weight = req.body.weight
         product.image = req.file.path
-        console.log(path)
     try {
         product = await product.save()
         res.redirect(`/gear/${product.slug}`)
-        console.log(path, req.product)
+       
     } catch(e) {  
         res.render(`gear/${path}`, { product: product })
-        console.log(path,req.product)
+        
     }      
     }
 }

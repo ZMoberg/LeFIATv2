@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="row article_title mx-5">
+    <div class="row gear_title mx-5">
         <span class="col-1 text-start"><img src="/public/img/down-arrow.png" alt=""></span>
         <h1 class=" text-center col-10">Biggest Sale Items</h1>
         <span class="col-1 text-end"><img src="/public/img/down-arrow.png" alt=""></span>
@@ -33,31 +33,35 @@
 
     <a href="/gear/new" class="btn btn-success mx-3">New Item</a>
 
-    <% products.forEach(product =>  { %>
-    <div class="blog_article mt-2">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-6">
-                    <h4 class="card-title"> <%= product.title %> </h4>
-                    <div class="card-subtitle text-muted mb-2">
-                        <%- product.createdAt.toLocaleDateString() %>
+    <div class="row">
+        <% products.forEach(product =>  { %>
+        <div class="item_wrapper mt-2 col-3">
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="">
+                        <a href="/gear/<%= product.slug %> ">
+                            <img src="<%= product.image %>" alt="" class="img-fluid w-100 mb-4">
+                        </a>
                     </div>
-                    <div class="card-text mb-2">
-                        <%= product.description %>
+                    <div class="">
+                        <a href="/gear/<%= product.slug %>" class="text-decoration-none">
+                            <p class="mb-1"> <%= product.title %> </p>
+                        </a>
+                        <div class=" mb-2">
+                            $ <%= product.price %>
+                        </div>
                     </div>
+
                 </div>
-                <div class="col-6">
-                    <img src="<%= product.image %>" alt="" class="img-fluid w-100">
-                </div>
-            </div>
-            <div class="text-center mt-2">
-                <a href="/gear/<%= product.slug %>">Read More</a>
-                <!-- <a href="/gear/edit/<%= product.id %>" class="btn btn-info">Edit</a>
+                <!-- <div class="text-center mt-2">
+                    <a href="/gear/<%= product.slug %>">Read More</a>
+                    <a href="/gear/edit/<%= product.id %>" class="btn btn-info">Edit</a>
                     <form action="/gear/<%= product.id %>?_method=DELETE " method="POST" class="d-inline">
                         <button type="submit" class="btn btn-danger">Delete</button>
-                    </form> -->
+                    </form>
+                </div> -->
             </div>
         </div>
+        <% }) %>
     </div>
-    <% }) %>
 </div>

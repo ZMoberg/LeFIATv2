@@ -11,6 +11,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    price: {
+        type: Number,
+        required: true
+    },
+    weight: {
+        type: Number,
+        required: true,
+    },
     slug: {
         type: String,
         required: true,

@@ -1,15 +1,52 @@
 <div class="container">
-    <div class="col-6">
-        <img src="/<%= product.image %>" alt="" class="img-fluid w-100">
-    </div>
-    <h1 class="mb-2"><%= product.title %> </h1>
+    <div class="row mb-5">
+        <div class="col-6">
+            <img src="/<%= product.image %>" alt="" class="img-fluid w-100">
+        </div>
+        <!-- <div class="text-muted mb-2">
+            <%- product.createdAt.toLocaleDateString() %>
+        </div> -->
+        <div class="col-6">
+            <h1 class="mb-2"><%= product.title %> </h1>
+            <div class="text-muted">
+                <h4>$ <%= product.price %> </h4>
+            </div>
+            <div class="text-muted"><%= product.weight %> Ounces</div>
+            <div class="text-red">Ships within 3-4 business days</div>
 
-    <div class="text-muted mb-2">
-        <%- product.createdAt.toLocaleDateString() %>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                <label for="size">Size</label>
+
+                <div class="form-group">
+
+                    <input type="radio" class="btn-check" name="options" id="Sm" autocomplete="off" checked>
+                    <label class="btn btn-secondary" for="Sm">Small</label>
+
+                    <input type="radio" class="btn-check" name="options" id="M" autocomplete="off">
+                    <label class="btn btn-secondary" for="M">Medium</label>
+
+                    <input type="radio" class="btn-check" name="options" id="L" autocomplete="off">
+                    <label class="btn btn-secondary" for="L">Large</label>
+
+                    <input type="radio" class="btn-check" name="options" id="XL" autocomplete="off">
+                    <label class="btn btn-secondary" for="XL">XLarge</label>
+                </div>
+
+            </form>
+
+            <div class="">
+
+                <a href="#" class="btn ">add to cart</a>
+                <!-- <a href="/gear" class="btn btn-secondary">All Gear</a>
+                <a href="/gear/edit/<%= product.id %> " class="btn btn-info">Edit</a> -->
+            </div>
+        </div>
     </div>
-    <div class="text-muted mb-2"><%= product.slug %></div>
-    <a href="/gear" class="btn btn-secondary">All Gear</a>
-    <a href="/gear/edit/<%= product.id %> " class="btn btn-info">Edit</a>
+    <div class="w-100"><%= product.description %></div>
+
+    <div class="text-center">Related Products</div>
 
 
 </div>
