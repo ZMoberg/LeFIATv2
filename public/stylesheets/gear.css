@@ -13,6 +13,12 @@
     top: -38rem;
   }
 
+  .gear_card img {
+    height: 250px;
+    width: auto;
+    object-fit: cover;
+  }
+
   .gear_title {
     position: relative;
     bottom: 2rem;
@@ -35,3 +41,4 @@
   .item_wrapper a {
     text-decoration: none;
   }
+

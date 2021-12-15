@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row mb-5">
+    <div class="row my-5">
         <div class="col-6">
             <img src="/<%= product.image %>" alt="" class="img-fluid w-100">
         </div>
@@ -7,36 +7,55 @@
             <%- product.createdAt.toLocaleDateString() %>
         </div> -->
         <div class="col-6">
-            <h1 class="mb-2"><%= product.title %> </h1>
-            <div class="text-muted">
+            <h1 class="mb-2 mt-4"><%= product.title %> </h1>
+            <div class="text-muted mt-3">
                 <h4>$ <%= product.price %> </h4>
             </div>
-            <div class="text-muted"><%= product.weight %> Ounces</div>
-            <div class="text-red">Ships within 3-4 business days</div>
+            <div class="text-muted mt-3"><%= product.weight %> Ounces</div>
+
 
 
             <form action="" method="POST" enctype="multipart/form-data">
 
-                <label for="size">Size</label>
 
-                <div class="form-group">
 
-                    <input type="radio" class="btn-check" name="options" id="Sm" autocomplete="off" checked>
-                    <label class="btn btn-secondary" for="Sm">Small</label>
+                <div class="form-group mt-3">
+                    <div for="size" class="mt-5">Size</div>
+                    <div class="size btn-group-sm mt-2">
 
-                    <input type="radio" class="btn-check" name="options" id="M" autocomplete="off">
-                    <label class="btn btn-secondary" for="M">Medium</label>
+                        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+                        <label class="btn btn-secondary" for="option1">Small</label>
 
-                    <input type="radio" class="btn-check" name="options" id="L" autocomplete="off">
-                    <label class="btn btn-secondary" for="L">Large</label>
+                        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                        <label class="btn btn-secondary" for="option2">Medium</label>
 
-                    <input type="radio" class="btn-check" name="options" id="XL" autocomplete="off">
-                    <label class="btn btn-secondary" for="XL">XLarge</label>
+                        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                        <label class="btn btn-secondary" for="option3">Large</label>
+
+                        <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
+                        <label class="btn btn-secondary" for="option4">XLarge</label>
+                    </div>
+
+                    <div class="quantity mt-3 w-25">
+                        <label for="qty"></label>
+                        <select class="form-select" name="qty" id="qty" aria-label="Default select">
+                            <option selected>Qty:</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+
                 </div>
 
             </form>
 
-            <div class="">
+            <div class="d-flex align-items-start flex-column mt-5">
+                <div class="mt-5">
+                    <p class="text-danger" style="font-size: .75rem;">Ships within 3-4 business days</p>
+                </div>
+
+
 
                 <a href="#" class="btn ">add to cart</a>
                 <!-- <a href="/gear" class="btn btn-secondary">All Gear</a>
@@ -44,7 +63,8 @@
             </div>
         </div>
     </div>
-    <div class="w-100"><%= product.description %></div>
+
+    <div class="w-100 my-5"><%= product.description %></div>
 
     <div class="text-center">Related Products</div>
 

@@ -45,13 +45,11 @@ router.get('/new', (req, res) => {
 
 router.get('/edit/:id', async (req, res) => {
     const product = await Product.findById(req.params.id)
-    console.log(product)
     res.render('gear/edit', { product: product })
 })
 
 router.get('/:slug', async (req, res) => {
     const product = await Product.findOne({ slug: req.params.slug })
-    console.log(product)
     if(product == null) res.redirect('/gear')
     else res.render('gear/show', { product: product })
 })
