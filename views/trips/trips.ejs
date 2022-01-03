@@ -29,12 +29,12 @@
 
 
     <% locations.forEach(location => { %>
-    <a href="/trips/<%= location.slug %>">
-        <div class="trips__card card my-5">
+    <a href="/trips/<%= location.slug %>" class="">
+        <div class="trips__card card my-5 border-0">
             <img src="<%= location.image %>" alt="" class="trips__background  card-img">
 
             <div class="trip__info text-end">
-                <h4 class="card-title"> <%= location.title %> </h4>
+                <h4 class="card-title "> <%= location.title %> </h4>
                 <!-- <div class="card-text mb-2"> <%= location.description %> </div> -->
                 <div class="card-text days ">
                     <span class="card-text"><%= location.days %> days / </span>

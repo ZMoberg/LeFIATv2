@@ -25,16 +25,14 @@ router.get('/', isLoggedIn, (req, res) => {
 		title: "Login",
 		error: req.query.error
 	}
-
 	res.render('users/login', response);
 });
 
 router.get('/login', isLoggedOut, (req, res) => {
 	const response = {
-		title: "Login",
+		title: "Login",   
 		error: req.query.error
 	}
-
 	res.render('login', response);
 });
 

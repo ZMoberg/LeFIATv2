@@ -25,7 +25,7 @@
   }
   
   .newsletter__wrapper h3 {
-    font-size: .95rem;
+    font-size: 1.25rem;
     font-weight: bold;
     letter-spacing: .05rem;
   }
@@ -35,6 +35,7 @@
   .trips_title {
     position: relative;
     bottom: 2rem;
+    
   }
 
 /* Trips cards */
@@ -43,15 +44,28 @@
     max-height: 350px;
     height: 250px;
     width: auto;
+    /* object-fit: fill; */
     object-fit: cover;
     
 }
 
 .trip__info {
-    color: #fff;
+    font-family: Korolev;
+    font-weight: bold;
+    /* color: rgb(38, 38, 38); */
+    color: #ffff;
     position: absolute;
     bottom: 10%;
     right: 2.5%;
+}
+
+.trips__card {
+  -webkit-text-stroke: .5px #000;
+}
+
+.card-img {
+  background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67);
+  /* opacity: .73; */
 }
 
 

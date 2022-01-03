@@ -3,9 +3,15 @@
   height: auto;
   width: 100%;
   object-fit: cover;
+  
 }
 
 .all_trips {
   color: #000;
   letter-spacing: .15rem;
+}
+
+.card-img {
+  background: linear-gradient(to bottom, #99b5c1, #d1c4be);
+ 
 }
