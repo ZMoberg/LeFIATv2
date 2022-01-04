@@ -5,30 +5,30 @@ const User = require("../models/user")
 const express = require('express')
 const router = express.Router()
 
-function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated()) return next();
-	res.redirect('users/login');
-}
+// function isLoggedIn(req, res, next) {
+// 	if (req.isAuthenticated()) return next();
+// 	res.redirect('users/login');
+// }
 
 
-function isLoggedOut(req, res, next) {
-	if (!req.isAuthenticated()) return next();
-	res.redirect('/');
-}
+// function isLoggedOut(req, res, next) {
+// 	if (!req.isAuthenticated()) return next();
+// 	res.redirect('/');
+// }
+
+router.get('/', (req, res) => {
+    res.render('users/login')
+})
 
 // router.get('/', isLoggedIn, (req, res) => {
-//     res.render('users/login')
-// })
-
-router.get('/', isLoggedIn, (req, res) => {
-	const response = {
-		title: "Login",
-		error: req.query.error
-	}
-	res.render('users/login', response);
-});
-
-router.get('/login', isLoggedOut, (req, res) => {
+// 	const response = {
+// 		title: "Login",
+// 		error: req.query.error
+// 	}
+// 	res.render('users/login', response);
+// });
+// isLoggedOut,
+router.get('/login',  (req, res) => {
 	const response = {
 		title: "Login",   
 		error: req.query.error
