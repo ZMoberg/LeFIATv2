@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 // require("./controllers/passport")(passport)
-const User = require('./models/user');
+// const User = require('./models/user');
 
 const mongoSanitize = require('express-mongo-sanitize');
 const expressLayouts = require('express-ejs-layouts')
@@ -22,9 +22,9 @@ const tripsRouter = require('./routes/trips')
 const gearRouter = require('./routes/gear')
 const aboutRouter = require('./routes/about')
 const blogRouter = require('./routes/blog')
-const loginRouter = require('./routes/login')
-const logoutRouter = require('./routes/login')
-const registerRouter = require('./routes/register')
+// const loginRouter = require('./routes/login')
+// const logoutRouter = require('./routes/logout')
+// const registerRouter = require('./routes/register')
 
 const app = express()
 
@@ -72,7 +72,7 @@ mongoose.connect(process.env.DATABASE_URL, {
         saveUninitialized: true,
         cookie: {
             httpOnly: true,
-            // secure: true,
+            secure: true,
             expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
             maxAge: 1000 * 60 * 60 * 24 * 7
         }
@@ -85,14 +85,14 @@ mongoose.connect(process.env.DATABASE_URL, {
     app.use(passport.session());
   
 
-    passport.serializeUser(User.serializeUser());
-    passport.deserializeUser(User.deserializeUser());
-    passport.use(new LocalStrategy(User.authenticate()));
+    // passport.serializeUser(User.serializeUser());
+    // passport.deserializeUser(User.deserializeUser());
+    // passport.use(new LocalStrategy(User.authenticate()));
 
-    app.use((req, res, next) => {
-        res.locals.currentUser = req.user;
-        next();
-    })
+    // app.use((req, res, next) => {
+    //     res.locals.currentUser = req.user;
+    //     next();
+    // })
     
     
 app.use('/', indexRouter)
@@ -100,9 +100,9 @@ app.use('/trips', tripsRouter)
 app.use('/gear', gearRouter)
 app.use('/about', aboutRouter)
 app.use('/blog', blogRouter)
-app.use('/login', loginRouter)
-app.use('/logout', logoutRouter)
-app.use('/register', registerRouter)
+// app.use('/login', loginRouter)
+// app.use('/logout', logoutRouter)
+// app.use('/register', registerRouter)
 
 
 
