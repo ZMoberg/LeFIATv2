@@ -12,3 +12,13 @@ let swiper = new Swiper('.swiper-container', {
     },
     loop: true
   });
+
+
+  // search function
+
+$(document).ready(function(){
+  $('.search-icon').click(function(){
+    $('.search-icon').toggleClass('active')//Search Icon Change OnClick
+    $('.search-box').toggleClass('active')//box show WHen Click Icon
+  })
+}); 

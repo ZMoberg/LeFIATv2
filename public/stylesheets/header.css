@@ -25,3 +25,61 @@ header {
     background-image: url(
 "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
+
+
+/* search function  */
+
+
+/*-- Dropdown Search function --*/
+
+.search-icon:before{
+  content:'\f002';
+  font-family: fontAwesome;
+  /* line-height: 20px; */
+  color: #ffffff;
+  
+}
+
+.search-box {
+  width: 25vh;
+  height: 35px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c7c7c7;
+  padding: 0px 30px 0px 30px;
+  display: none;
+  float: right;
+}
+
+.search-box input{
+  width:70%;
+  height: 50px;
+  outline: none;
+  background: transparent;
+  border: none;
+  color: #e3e3e3;
+  font-size: 16px;
+}
+
+.search-box input::placeholder{
+  color: #c7c7c7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.search-icon.active:before{
+  content:'\f00d' ;
+  color: #e3e3e3;
+  height: .8rem;
+  float: right;
+  margin: 7px;
+}
+
+.search-box.active {
+  display: flex;
+}

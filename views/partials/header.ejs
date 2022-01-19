@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/stylesheets/header.css">
 <link rel="stylesheet" href="https://use.typekit.net/pll1lxb.css">
+<script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+
 
 <div class="landing__page"></div>
 
@@ -17,12 +19,19 @@
                 <a class="nav-item nav-link px-4" href="/gear">GEAR</a>
                 <a class="nav-item nav-link px-4" href="/about">ABOUT</a>
                 <a class="nav-item nav-link px-4" href="/blog">BLOG</a>
-                <a class="nav-item nav-link px-4" href="#"><img src="/img/search.png" alt="search icon"></a>
+
+                <!-- <a class="nav-item nav-link px-4" href="#"><img src="/img/search.png" alt="search icon"></a> -->
+                <div class=" nav-item nav-link px-4 search-icon"></div>
+                <div class="search-box">
+                    <!-------input-->
+                    <input type="text" placeholder="Search">
+                    <!----------search-icon------->
+                    <div class="s-icon"><i class="fas fa-search"></i></i></div>
+                </div>
+
                 <a class="nav-link px-4" href="/cart"><img src="/img/cart.png" alt="shopping cart icon"></a>
 
-
                 <a class="nav-item nav-link px-4" href="/login">LOGIN / REGISTER</a>
-
 
                 <a class="nav-item nav-link px-4" href="/logout">LOGOUT</a>
 
@@ -32,3 +41,6 @@
         </div>
     </div>
 </nav>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>

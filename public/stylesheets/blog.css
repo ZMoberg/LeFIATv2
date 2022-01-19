@@ -6,6 +6,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+
   }
 
   nav {
@@ -33,6 +34,10 @@
   }
 
   /* article card display */
+
+  .blog_article {
+    font-family: Korolev;
+  }
 
   .blog_article img {
     max-height: 350px;
