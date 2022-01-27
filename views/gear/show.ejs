@@ -11,7 +11,7 @@
             <div class="text-muted mt-3">
                 <h4>$ <%= product.price %> </h4>
             </div>
-            <div class="text-muted mt-3"><%= product.weight %> Ounces</div>
+            <div class="text-muted mt-3" style="font-family: Korolev;"><%= product.weight %> Ounces</div>
 
 
 
@@ -20,7 +20,7 @@
 
 
                 <div class="form-group mt-3">
-                    <div for="size" class="mt-5">Size</div>
+                    <div for="size" class="mt-5" style="font-family: Korolev;">Size</div>
                     <div class="size btn-group-sm mt-2">
 
                         <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
@@ -52,7 +52,8 @@
 
             <div class="d-flex align-items-start flex-column mt-5">
                 <div class="mt-5">
-                    <p class="text-danger" style="font-size: .75rem;">Ships within 3-4 business days</p>
+                    <p class="text-danger" style="font-size: .75rem; font-family: Korolev;">Ships within 3-4 business
+                        days</p>
                 </div>
 
 
@@ -64,9 +65,9 @@
         </div>
     </div>
 
-    <div class="w-100 my-5"><%= product.description %></div>
+    <div class="w-100 my-5" style="font-family: Korolev;"><%= product.description %></div>
 
-    <div class="text-center">Related Products</div>
+    <!-- <div class="text-center">Related Products</div> -->
 
 
 </div>
