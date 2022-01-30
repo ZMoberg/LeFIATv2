@@ -63,7 +63,9 @@ router.post('/', upload.single('image'), async (req, res, next) => {
 }, saveArticleAndRedirect('new'))
 
 router.put('/:id', upload.single('image'), async (req, res, next) => {
-    req.article = await Article.findOneAndUpdate(req.params.id)
+   
+    req.article = await Article.findOneAndUpdate({ slug: req.params.slug })
+    console.log(req.body)
     next()
 }, saveArticleAndRedirect('edit'))
 
@@ -73,6 +75,7 @@ router.delete('/:id', async (req, res) => {
 })
 
 function saveArticleAndRedirect(path) {
+    
     return async (req, res) => {
         let article = req.article
         article.title = req.body.title
@@ -81,6 +84,9 @@ function saveArticleAndRedirect(path) {
         article.markdown = req.body.markdown
         article.image = req.file.path
     try {
+        if (! req.file || ! req.file.path) {
+            return res.sendStatus(400);
+          }
         article = await article.save()
         res.redirect(`/blog/${article.slug}`)
     } catch(e) {  

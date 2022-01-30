@@ -40,6 +40,12 @@
   }
 
   .blog_article img {
-    max-height: 350px;
+    max-height: 250px;
     object-fit: cover;
+  }
+
+  .read_more {
+    position: absolute;
+    bottom: 1rem;
+    left: 18rem;
   }
