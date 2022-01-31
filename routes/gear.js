@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
 
     // destination for file
     destination: function (req, file, callback) {
-        callback(null, './public/products')
+        callback(null, './public/products/')
     },
     // add back the extension
     filename: function (req, file, callback) {
@@ -60,16 +60,18 @@ router.post('/', upload.single('image'), async (req, res, next) => {
 }, saveProductAndRedirect('new'))
 
 router.put('/:id', upload.single('image'), async (req, res, next) => {
+    console.log(req.file, req.body)
     req.product = await Product.findOneAndUpdate(req.params.id)
     next()
-}, saveProductAndRedirect('edit'))
+}, saveProductAndRedirect(`show`))
 
 router.delete('/:id', async (req, res) => {
     await Product.findByIdAndDelete(req.params.id)
-    res.redirect('/gear')
+    res.redirect(`/gear`)
 })
 
 function saveProductAndRedirect(path) {  
+    
     return async (req, res) => {
         let product = req.product
         product.title = req.body.title
@@ -77,15 +79,30 @@ function saveProductAndRedirect(path) {
         product.price = req.body.price
         product.weight = req.body.weight
         product.image = req.file.path
-    try {
-        product = await product.save()
-        res.redirect(`/gear/${product.slug}`)
-       
-    } catch(e) {  
-        res.render(`gear/${path}`, { product: product })
         
-    }      
+        try {
+            if (! req.file || ! req.file.path) {
+                return res.sendStatus(400);
+              }
+            product = await product.save()
+            res.redirect(`/gear/${product.slug}`)
+        } catch(err) {  
+            console.log(err)
+            res.render(`gear/${path}`, { product: product })
+        }      
+        }
     }
-}
+
+//     try {
+//         product = await product.save()
+//         res.redirect(`/gear/${product.slug}`)
+       
+//     } catch(e) {  
+   
+//         res.render(`gear/${path}`, { product: product })
+        
+//     }      
+//     }
+// }
 
 module.exports = router
