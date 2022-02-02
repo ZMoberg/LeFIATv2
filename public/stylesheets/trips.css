@@ -46,7 +46,7 @@
     width: auto;
     /* object-fit: fill; */
     object-fit: cover;
-    
+    opacity: .8;
 }
 
 .trip__info {
@@ -62,11 +62,3 @@
 .trips__card {
   -webkit-text-stroke: .5px #000;
 }
-
-.card-img {
-  background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67);
-  /* opacity: .73; */
-}
-
-
-

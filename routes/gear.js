@@ -61,9 +61,9 @@ router.post('/', upload.single('image'), async (req, res, next) => {
 
 router.put('/:id', upload.single('image'), async (req, res, next) => {
     console.log(req.file, req.body)
-    req.product = await Product.findOneAndUpdate(req.params.id)
+    req.product = await Product.findOneAndUpdate({ slug: req.params.slug })
     next()
-}, saveProductAndRedirect(`show`))
+}, saveProductAndRedirect(`edit`))
 
 router.delete('/:id', async (req, res) => {
     await Product.findByIdAndDelete(req.params.id)
@@ -92,17 +92,5 @@ function saveProductAndRedirect(path) {
         }      
         }
     }
-
-//     try {
-//         product = await product.save()
-//         res.redirect(`/gear/${product.slug}`)
-       
-//     } catch(e) {  
-   
-//         res.render(`gear/${path}`, { product: product })
-        
-//     }      
-//     }
-// }
 
 module.exports = router
