@@ -1,4 +1,4 @@
- .landing__page {
+   .landing__page {
     position: relative;
     height: 115vh;
     color: white;
@@ -89,6 +89,7 @@ nav {
   bottom: 6rem;
   max-width: auto;
   max-height: 25vh;
+  
 }
 
 .clouds img {
@@ -104,6 +105,10 @@ nav {
   position: absolute;
   top: 85%;
   right: 10rem;
+}
+
+.carousel-inner .active{
+  background:none !important;
 }
 
 .review__body {

@@ -17,12 +17,12 @@ footer {
   max-height: 2.15rem;
 }
 
-.blog__action {
+/* .blog__action {
     position: relative;
     top: 13rem;
     left: 50%;
     max-width: 650px;
-}
+} */
 
 .blog__action a {
     font-size: 1.35rem;
@@ -87,4 +87,5 @@ footer {
   background-color: #3f5900;
   border-radius: 3px;
 }
+
 
