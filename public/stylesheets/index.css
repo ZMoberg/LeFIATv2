@@ -82,7 +82,7 @@ nav {
 }
 
 /* Clouds */
-
+/* 
 .clouds {
   font-family: "Korolev";
   position: relative;
@@ -99,7 +99,7 @@ nav {
 
 /* review carousel  */
 
-.review__carousel {
+/* .review__carousel {
   font-weight: bold;
   font-style: italic;
   position: absolute;
@@ -117,11 +117,11 @@ nav {
 
 .review__author {
   font-size: .65rem;
-}
+} */
 
 /* newsletter sign up */
 
-.newsletter__wrapper {
+/* .newsletter__wrapper {
   width: 400px;
   position: absolute;
   top: 85%;
@@ -140,7 +140,7 @@ nav {
   color: #fff;
   background-color: #3f5900;
   border-radius: 3px;
-}
+} */ 
 
   
   @media (max-width: 530px) {
