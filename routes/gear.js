@@ -3,6 +3,8 @@ const multer = require('multer')
 const Product = require('./../models/product')
 const router = express.Router()
 
+
+
 const storage = multer.diskStorage({
 
     // destination for file
