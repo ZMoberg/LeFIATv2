@@ -4,18 +4,19 @@ const Product = require('./../models/product')
 const router = express.Router()
 
 
-
 const storage = multer.diskStorage({
-
     // destination for file
     destination: function (req, file, callback) {
-        callback(null, './public/products/')
+      callback(null, "./public/products/");
     },
     // add back the extension
     filename: function (req, file, callback) {
-        callback(null, new Date().toISOString() + file.originalname)
+      callback(
+        null,
+        new Date().toISOString().replace(/[:\.]/g, "-") + file.originalname
+      );
     },
-})
+  });
 
 const fileFilter = (req, file, cb) => {
     // reject a file
@@ -80,7 +81,7 @@ function saveProductAndRedirect(path) {
         product.description = req.body.description
         product.price = req.body.price
         product.weight = req.body.weight
-        product.image = req.file.path
+        product.image = req.file?.path
         
         try {
             if (! req.file || ! req.file.path) {

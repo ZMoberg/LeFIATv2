@@ -4,16 +4,18 @@ const Article = require('./../models/article')
 const router = express.Router()
 
 const storage = multer.diskStorage({
-
     // destination for file
     destination: function (req, file, callback) {
-        callback(null, './public/uploads')
+      callback(null, "./public/uploads/");
     },
     // add back the extension
     filename: function (req, file, callback) {
-        callback(null, new Date().toISOString() + file.originalname)
+      callback(
+        null,
+        new Date().toISOString().replace(/[:\.]/g, "-") + file.originalname
+      );
     },
-})
+  });
 
 const fileFilter = (req, file, cb) => {
     // reject a file
