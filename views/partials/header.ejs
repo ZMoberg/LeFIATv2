@@ -8,47 +8,63 @@
 
 
 
-<div class="landing__page"></div>
+<div class="landing__page">
 
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid px-5 mt-3">
-        <a class="navbar-brand" href="/"><img src="/img/lf-logo.png" alt="lefiat logo" class="img-fluid"></a>
-        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavAltMarkup">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-5 mt-2">
+            <a class="navbar-brand" href="/"><img src="/img/lf-logo.png" alt="lefiat logo" class="img-fluid"></a>
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavAltMarkup">
 
-            <div class="navbar-nav navbar__header float-end">
-                <a class="nav-item nav-link px-4 active" href="/trips">TRIPS</a>
-                <a class="nav-item nav-link px-4" href="/gear">GEAR</a>
-                <a class="nav-item nav-link px-4" href="/about">ABOUT</a>
-                <a class="nav-item nav-link px-4" href="/blog">BLOG</a>
+                <div class="navbar-nav navbar__header float-end">
+                    <a class="nav-item nav-link px-4 active" href="/trips">TRIPS</a>
+                    <a class="nav-item nav-link px-4" href="/gear">GEAR</a>
+                    <a class="nav-item nav-link px-4" href="/about">ABOUT</a>
+                    <a class="nav-item nav-link px-4" href="/blog">BLOG</a>
 
-                <!-- <a class="nav-item nav-link px-4" href="#"><img src="/img/search.png" alt="search icon"></a> -->
-                <div class=" nav-item nav-link px-4 search-icon"></div>
-                <div class="search-box">
-                    <!-------input-->
-                    <div class="s-icon">
-                        <input type="text" placeholder="Search">
-                        <!----------search-icon------->
-                        <i class="fas fa-search"></i></i></div>
-                </div>
+                    <!-- <a class="nav-item nav-link px-4" href="#"><img src="/img/search.png" alt="search icon"></a> -->
+                    <div class=" nav-item nav-link px-4 search-icon"></div>
+                    <div class="search-box">
+                        <!-------input-->
+                        <div class="s-icon">
+                            <input type="text" placeholder="Search">
+                            <!----------search-icon------->
+                            <i class="fas fa-search"></i></i></div>
+                    </div>
 
-                <a class="nav-link px-4" href="/cart"><img src="/img/cart.png" alt="shopping cart icon"></a>
+                    <a class="nav-link px-4" href="/cart"><img src="/img/cart.png" alt="shopping cart icon"></a>
 
-                <!-- <a class="nav-item nav-link px-4" href="/login">LOGIN / REGISTER</a>
+                    <!-- <a class="nav-item nav-link px-4" href="/login">LOGIN / REGISTER</a>
 
                 <a class="nav-item nav-link px-4" href="/logout">LOGOUT</a> -->
 
 
 
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+    <div id="sign_up" class="newsletter__wrapper">
+        <div class="d-flex justify-content-between flex-column ">
+            <h3 class="flex-fill col text-white">Enter for your chance to win a FREE guided adventure</h3>
+            <form action="#" class="row flex-fill">
+                <div class="col my-md-2 my-2"> <input type="email"
+                        class="form-control px-4 border-0 w-100 text-center text-md-left" id="email"
+                        placeholder="Your Email" name="email"> </div>
+                <div class="row mx-0 my-md-2 my-2"> <button type="submit" class="btn py-1 w-100">Sign Up
+                        Today</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 </script>
