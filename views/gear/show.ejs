@@ -60,7 +60,7 @@
 
                 <a href="#" class="btn mt-3">add to cart</a>
                 <a href="/gear/edit/<%= product.id %> " class="float-right mt-5 text-decoration-none text-dark">Edit</a>
-
+                <%- include('../partials/deleteForm', { url: `/gear/${product.id}` }) %>
             </div>
         </div>
     </div>
