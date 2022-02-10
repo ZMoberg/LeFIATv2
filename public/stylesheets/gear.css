@@ -1,6 +1,6 @@
 .landing__page {
     position: relative;
-    height: 85vh;
+    height: 100vh;
     color: white;
     background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67),  url('/img/lefiatGear.jpg');
     background-size: cover;
@@ -8,10 +8,10 @@
     background-position: center center;
   }
 
-  nav {
+  /* nav {
     position: relative;
     top: -38rem;
-  }
+  } */
 
   .gear_card img {
     height: 250px;
@@ -25,7 +25,7 @@
   }
   /* Newsletter signup */
 
-  .newsletter__wrapper {
+  /* .newsletter__wrapper {
     width: 400px;
     position: absolute;
     top: 35%;
@@ -40,5 +40,5 @@
 
   .item_wrapper a {
     text-decoration: none;
-  }
+  } */
 

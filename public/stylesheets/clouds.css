@@ -37,14 +37,14 @@
   
   /* newsletter sign up */
   
-  .newsletter__wrapper {
+  .clouds__signup {
     width: 400px;
     position: absolute;
     top: 85%;
     right: 8rem;
   }
   
-  .newsletter__wrapper h3 {
+  .clouds__signup h3 {
     font-size: .95rem;
     font-weight: bold;
     letter-spacing: .05rem;

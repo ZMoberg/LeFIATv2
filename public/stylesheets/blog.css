@@ -1,6 +1,6 @@
 .landing__page {
     position: relative;
-    height: 85vh;
+    height: 100vh;
     color: white;
     background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67),  url('/img/mtWhitney.jpg');
     background-size: cover;
@@ -14,13 +14,13 @@
     top: -38rem;
   } */
 
-  .article_title {
+  /* .article_title {
     position: relative;
     bottom: 2.25rem;
-  }
+  } */
   /* Newsletter signup */
 
-  .newsletter__wrapper {
+  /* .newsletter__wrapper {
     width: 400px;
     position: absolute;
     top: 35%;
@@ -31,7 +31,7 @@
     font-size: .95rem;
     font-weight: bold;
     letter-spacing: .05rem;
-  }
+  } */
 
   /* article card display */
 

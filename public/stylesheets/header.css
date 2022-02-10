@@ -47,7 +47,8 @@ header {
 }
 
 .search-box {
-  width: 25vh;
+ 
+  width: 10vw;
   height: 35px;
   box-sizing: border-box;
   background-color: #ffffff;
@@ -89,3 +90,16 @@ header {
 .search-box.active {
   display: flex;
 }
+
+
+  /* newsletter sign up */
+  
+  .newsletter__wrapper{
+    width: 400px;
+  }
+  
+  .newsletter__wrapper h3 {
+    font-size: .95rem;
+    font-weight: bold;
+    letter-spacing: .05rem;
+  }

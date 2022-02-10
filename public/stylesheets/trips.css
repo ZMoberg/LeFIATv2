@@ -1,7 +1,7 @@
 
 .landing__page {
     position: relative;
-    height: 85vh;
+    height: 100vh;
     color: white;
     background-image: linear-gradient(to bottom, #cca3925d, #8d6c5d67),  url('/img/trips-landing.jpg');
     background-size: cover;
@@ -16,7 +16,7 @@
   } */
 
   /* Newsletter signup */
-
+/* 
   .newsletter__wrapper {
     width: 400px;
     position: absolute;
@@ -28,15 +28,15 @@
     font-size: 1.25rem;
     font-weight: bold;
     letter-spacing: .05rem;
-  }
+  } */
 
   /* Trips title */
 
-  .trips_title {
+  /* .trips_title {
     position: relative;
     bottom: 2rem;
     
-  }
+  } */
 
 /* Trips cards */
 
