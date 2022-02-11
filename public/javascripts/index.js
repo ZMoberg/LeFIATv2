@@ -41,5 +41,5 @@ const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
     alertPlaceholder.append(wrapper);
   }
   if (window.location.search.indexOf("?email=") > -1) {
-    alert("Email Submitted Successfully!", "success");
+    alert("Email Submitted Successfully!", "light");
   }
