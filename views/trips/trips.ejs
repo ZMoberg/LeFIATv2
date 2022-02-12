@@ -67,3 +67,29 @@
     <% }) %>
 
 </div>
+
+<% locations.forEach(location => { %>
+    <div class="">
+        <a href="/trips/<%= location.slug %>" class="">
+            <div class="trips__card card my-5 border-0" id="">
+                <img src="<%= location.image %>" alt="" class="trips__background  card-img">
+
+                <div class="trip__info text-end">
+                    <h4 class="card-title "> <%= location.title %> </h4>
+                    <!-- <div class="card-text mb-2"> <%= location.description %> </div> -->
+                    <div class="card-text days ">
+                        <span class="card-text"><%= location.days %> days / </span>
+                        <span class="card-text"> <%= location.nights %> nights</span>
+                        <span class="card-text text-end"> $ <%= location.price %> </span>
+                    </div>
+                </div>
+                <!-- <a href="/trips/<%= location.slug %> " class="btn btn-primary">Read More</a>
+                <a href="trips/edit/<%= location.id %> " class="btn btn-info">Edit</a>
+                <form action="/trips/<%= location.id %>?_method=DELETE" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form> -->
+
+            </div>
+        </a>
+    </div>
+    <% }) %>
