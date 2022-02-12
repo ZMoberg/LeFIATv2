@@ -28,6 +28,7 @@ footer {
     font-size: 1.35rem;
     letter-spacing: .15rem;
     color: #000;
+
 }
 
 #footer__nav {
@@ -43,9 +44,9 @@ footer {
 
 
 .clouds {
-  font-family: "Korolev";
-  position: relative;
-  bottom: 6rem;
+  /* font-family: "Korolev"; */
+  /* position: relative; */
+  /* bottom: 6rem; */
 }
 
 
@@ -91,6 +92,8 @@ footer {
 
 /* Blog link */
 
-.follow {
-  font-size: 1.5rem;
+.follow a{
+  font-size: 1.75rem;
+  position: relative;
+  top: 10rem;
 }

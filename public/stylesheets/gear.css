@@ -8,11 +8,6 @@
     background-position: center center;
   }
 
-  /* nav {
-    position: relative;
-    top: -38rem;
-  } */
-
   .gear_card img {
     height: 250px;
     width: auto;
@@ -23,22 +18,4 @@
     position: relative;
     bottom: 2rem;
   }
-  /* Newsletter signup */
-
-  /* .newsletter__wrapper {
-    width: 400px;
-    position: absolute;
-    top: 35%;
-    right: 8rem;
-  }
-  
-  .newsletter__wrapper h3 {
-    font-size: .95rem;
-    font-weight: bold;
-    letter-spacing: .05rem;
-  }
-
-  .item_wrapper a {
-    text-decoration: none;
-  } */
-
+ 
