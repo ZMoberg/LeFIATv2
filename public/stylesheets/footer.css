@@ -44,18 +44,24 @@ footer {
 
 
 .clouds {
-  /* font-family: "Korolev"; */
-  /* position: relative; */
-  /* bottom: 6rem; */
+  height: 30vh;
+}
+
+.cloud_container {
+
+ width: 100%; 
+ background-size: cover;
+ background-repeat: no-repeat;
+
 }
 
 
 .review__carousel {
   font-weight: bold;
   font-style: italic;
-  position: absolute;
+  /* position: absolute;
   top: 85%;
-  right: 10rem;
+  right: 10rem; */
 }
 
 .review__body {
@@ -70,9 +76,9 @@ footer {
 
 .subscription__wrapper {
   width: 400px;
-  position: absolute;
+  /* position: absolute;
   top: 85%;
-  right: 8rem;
+  right: 8rem; */
 }
 
 .subscription__wrapper h3 {
