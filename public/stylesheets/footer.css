@@ -48,20 +48,20 @@ footer {
 }
 
 .cloud_container {
-
  width: 100%; 
  background-size: cover;
  background-repeat: no-repeat;
 
 }
 
+.clouds__signup h3 {
+  font-size: 1.15rem;
+}
+
 
 .review__carousel {
   font-weight: bold;
   font-style: italic;
-  /* position: absolute;
-  top: 85%;
-  right: 10rem; */
 }
 
 .review__body {
@@ -76,9 +76,7 @@ footer {
 
 .subscription__wrapper {
   width: 400px;
-  /* position: absolute;
-  top: 85%;
-  right: 8rem; */
+
 }
 
 .subscription__wrapper h3 {
