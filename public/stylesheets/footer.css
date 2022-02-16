@@ -17,13 +17,6 @@ footer {
   max-height: 2.15rem;
 }
 
-/* .blog__action {
-    position: relative;
-    top: 13rem;
-    left: 50%;
-    max-width: 650px;
-} */
-
 .blog__action a {
     font-size: 1.35rem;
     letter-spacing: .15rem;

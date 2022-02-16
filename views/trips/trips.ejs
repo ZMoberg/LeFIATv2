@@ -2,26 +2,10 @@
 
 <div class="container px-0">
 
-    <!-- <div class="landing img-fluid">
-        <div class="newsletter__wrapper">
-            <div class="d-flex justify-content-between flex-column ">
-                <h3 class="flex-fill col text-white">Enter for your chance to win a FREE adventure</h3>
-                <form action="#" class="row flex-fill">
-                    <div class="col my-md-2 my-2"> <input type="email"
-                            class="form-control px-4 border-0 w-100 text-center text-md-left" id="email"
-                            placeholder="Your Email" name="email"> </div>
-                    <div class="row mx-0 my-md-2 my-2"> <button type="submit" class="btn py-1 w-100">Sign Up
-                            Today</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> -->
-
     <div class="row pt-3">
-        <!-- <span class="col-1 text-start"><img src="/public/img/down-arrow.png" alt=""></span> -->
+
         <h1 class="text-center">Choose You Adventure</h1>
-        <!-- <span class="col-1 text-end"><img src="/public/img/down-arrow.png" alt=""></span> -->
+
         <p class="mt-4">California offers an incredible wealth of options for a hiking vacation you’ll never forget.
             Home to
             world-famous Yosemite National Park, the stunning Lost Coast, Joshua Tree, Death Valley, Sequoia-Kings
@@ -37,7 +21,7 @@
     </div>
 
 
-    <!-- <a href="/trips/new" class="btn btn-success">New Trip</a> -->
+    <a href="/trips/new" class="btn btn-success">New Trip</a>
 
 
     <% locations.forEach(location => { %>
@@ -67,29 +51,3 @@
     <% }) %>
 
 </div>
-
-<% locations.forEach(location => { %>
-    <div class="">
-        <a href="/trips/<%= location.slug %>" class="">
-            <div class="trips__card card my-5 border-0" id="">
-                <img src="<%= location.image %>" alt="" class="trips__background  card-img">
-
-                <div class="trip__info text-end">
-                    <h4 class="card-title "> <%= location.title %> </h4>
-                    <!-- <div class="card-text mb-2"> <%= location.description %> </div> -->
-                    <div class="card-text days ">
-                        <span class="card-text"><%= location.days %> days / </span>
-                        <span class="card-text"> <%= location.nights %> nights</span>
-                        <span class="card-text text-end"> $ <%= location.price %> </span>
-                    </div>
-                </div>
-                <!-- <a href="/trips/<%= location.slug %> " class="btn btn-primary">Read More</a>
-                <a href="trips/edit/<%= location.id %> " class="btn btn-info">Edit</a>
-                <form action="/trips/<%= location.id %>?_method=DELETE" method="POST" class="d-inline">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form> -->
-
-            </div>
-        </a>
-    </div>
-    <% }) %>
