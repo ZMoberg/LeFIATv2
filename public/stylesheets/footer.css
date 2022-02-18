@@ -1,8 +1,8 @@
 footer {
-    
     background: url('/img/lf-footer.jpg') no-repeat center center;
     background-size: cover;
     height: 600px;
+    /* padding: 90px 0; */
     font-family: good-times;
     text-align: center;
 }
@@ -25,9 +25,7 @@ footer {
 }
 
 #footer__nav {
-  position: relative;
-  top: 24rem;
-  
+
 }
 
 
@@ -36,15 +34,18 @@ footer {
 }
 
 
+/* clouds partial container */
+
 .clouds {
   height: 30vh;
 }
 
 .cloud_container {
  width: 100%; 
- background-size: cover;
+ background-size: contain;
  background-repeat: no-repeat;
-
+ background-position: center center;
+ height: auto;
 }
 
 .clouds__signup h3 {
@@ -91,6 +92,6 @@ footer {
 
 .follow a{
   font-size: 1.75rem;
-  position: relative;
-  top: 10rem;
+  /* position: relative; */
+  /* top: 10rem; */
 }
