@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/new', (req, res) => {
-    res.render('gear/new', { product: new Product() })
+    // res.render('gear/new', { product: new Product() })
     ejsRender(req, res, 'gear/new', { product: new Product() })
 })
 
@@ -63,7 +63,8 @@ router.get('/edit/:id', async (req, res) => {
 router.get('/:slug', async (req, res) => {
     const product = await Product.findOne({ slug: req.params.slug })
     if(product == null) res.redirect('/gear')
-    else res.render('gear/show', { product: product })
+    // else res.render('gear/show', { product: product })
+    else ejsRender(req, res, 'gear/show', { product: product })
 })
 
 router.post('/', upload.single('image'), async (req, res, next) => {
@@ -100,7 +101,8 @@ function saveProductAndRedirect(path) {
             res.redirect(`/gear/${product.slug}`)
         } catch(err) {  
             console.log(err)
-            res.render(`gear/${path}`, { product: product })
+            // res.render(`gear/${path}`, { product: product })
+            ejsRender(req, res, `gear/${path}`, { product: product })
         }      
         }
     }
