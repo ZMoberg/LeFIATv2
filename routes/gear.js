@@ -1,7 +1,7 @@
 const express = require('express')
 const multer = require('multer')
 const Product = require('./../models/product')
-const ejsRender = require("../utils/ejsRender");
+const ejsRender = require("./../utils/ejsRender");
 const router = express.Router()
 
 
@@ -37,12 +37,6 @@ const fileFilter = (req, file, cb) => {
     },
     fileFilter: fileFilter
 })
-
-
-
-// router.get("/", (req, res) => {
-//   ejsRender(req, res, "about");
-// });
 
 router.get('/', async (req, res) => {
     const products = await Product.find().sort({ createdAt: 'desc' })

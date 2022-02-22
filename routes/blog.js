@@ -1,5 +1,6 @@
 const express = require('express')
-const multer = require('multer')
+const multer = require('multer');
+const ejsRender = require('./../utils/ejsRender');
 const Article = require('./../models/article')
 const router = express.Router()
 
@@ -41,16 +42,19 @@ const upload = multer({
 
 router.get('/', async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' })
-    res.render('blog/index', { articles: articles })
+    ejsRender(req, res, 'blog/index', { articles: articles })
+    // res.render('blog/index', { articles: articles })
 })
 
 router.get('/new', (req, res) => {
-    res.render('blog/new', { article: new Article() })
+    ejsRender(req, res, 'blog/new', { article: new Article() })
+    // res.render('blog/new', { article: new Article() })
 })
 
 router.get('/edit/:id', async (req, res) => {
     const article = await Article.findById(req.params.id)
-    res.render('blog/edit', { article: article })
+    ejsRender(req, res, 'blog/edit', { article: article })
+    // res.render('blog/edit', { article: article })
 })
 
 router.get('/:slug', async (req, res) => {

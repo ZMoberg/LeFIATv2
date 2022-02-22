@@ -3,4 +3,4 @@ module.exports = function (req, res, templateName, options = {}) {
       showSignup: !req.path.split("/")[1],
       ...options,
     });
-  };
+  };  
