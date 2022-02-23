@@ -1,8 +1,4 @@
 footer {
-  /* background: url('/img/lf-footer.jpg') no-repeat center center;
-    background-size: cover;
-    height: 600px; */
-  /* padding: 90px 0; */
   font-family: good-times;
   text-align: center;
   position: relative;
@@ -83,7 +79,7 @@ footer .footer-nav {
 /* Subscription sign up */
 
 .subscription__wrapper {
-  width: 400px;
+  width: 10vw;
 }
 
 .subscription__wrapper h3 {
@@ -106,8 +102,16 @@ footer .footer-nav {
   right: 0;
   padding-top: 15vw;
 }
-.follow a {
-  font-size: 1.75rem;
-  /* position: relative; */
-  /* top: 10rem; */
+
+/* If the screen size is 1200px wide or more */
+@media (min-width: 1200px) {
+  .follow {
+    font-size: 1.5rem;
+  }
+}
+/* If the screen size is smaller than 550px */
+@media (max-width: 550px) {
+  .follow {
+    font-size: .75rem;
+  }
 }

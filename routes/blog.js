@@ -97,7 +97,8 @@ function saveArticleAndRedirect(path) {
     } catch(err) {  
         if (article != null) {
             console.log(err)
-            res.render(`blog/${path}`, { article: article })
+            ejsRender(req, res, `blog/${path}`, { article: article })
+            // res.render(`blog/${path}`, { article: article })
         } else {
             redirect('/edit')
         }

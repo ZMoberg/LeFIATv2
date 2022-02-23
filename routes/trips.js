@@ -1,6 +1,9 @@
-const express = require('express')
 const multer = require('multer')
+
+const ejsRender = require("../utils/ejsRender");
 const Location = require('./../models/location')
+
+const express = require('express')
 const router = express.Router()
 
 const storage = multer.diskStorage({
@@ -37,24 +40,28 @@ const upload = multer({
 // All trips route
 router.get('/', async (req, res) => {
     const locations = await Location.find()
-    res.render('trips/trips', { locations: locations })
+    ejsRender(req, res, 'trips/trips', { locations: locations })
+    // res.render('trips/trips', { locations: locations })
 })
 
 // New trips route
 
 router.get('/new', (req, res) => {
-    res.render('trips/new', { location: new Location() })
+    ejsRender(req, res, 'trips/new', { location: new Location() })
+    // res.render('trips/new', { location: new Location() })
 })
 
 router.get('/edit/:id', async (req, res) => {
     const location = await Location.findById(req.params.id)
-    res.render('trips/edit', { location: location })
+    ejsRender(req, res, 'trips/edit', { location: location })
+    // res.render('trips/edit', { location: location })
 })
 
 router.get('/:slug', async (req, res) => {
     const location = await Location.findOne({ slug: req.params.slug })
     if (location == null) return res.redirect('/trips')
-    res.render('trips/show', { location: location })
+    ejsRender(req, res, 'trips/show', { location: location })
+    // res.render('trips/show', { location: location })
 })
 
 router.post('/', upload.single('image'), async (req, res, next) => {
@@ -86,7 +93,8 @@ function saveLocationAndRedirect(path) {
         location = await location.save()  
         res.redirect(`/trips/${location.slug}`)
     } catch(e) {
-        res.render(`trips/${path}`, { location: location })
+        ejsRender(req, res, `trips/${path}`, { location: location })
+        // res.render(`trips/${path}`, { location: location })
     }
     }
 }

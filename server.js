@@ -81,8 +81,8 @@ mongoose.connect(process.env.DATABASE_URL, {
 
     app.use(session(sessionConfig));
 
-    app.use(passport.initialize());
-    app.use(passport.session());
+    // app.use(passport.initialize());
+    // app.use(passport.session());
   
 
     // passport.serializeUser(User.serializeUser());
