@@ -1,16 +1,35 @@
 footer {
-    background: url('/img/lf-footer.jpg') no-repeat center center;
+  /* background: url('/img/lf-footer.jpg') no-repeat center center;
     background-size: cover;
-    height: 600px;
-    /* padding: 90px 0; */
-    font-family: good-times;
-    text-align: center;
+    height: 600px; */
+  /* padding: 90px 0; */
+  font-family: good-times;
+  text-align: center;
+  position: relative;
+}
+
+footer img {
+  width: 100%;
+}
+
+footer .footer-nav {
+  padding-top: 25vw;
+}
+
+.text-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* linear-gradient(to bottom, #cca3925d, #8d6c5d67),  */
 
 #footer__logo {
-   
 }
 
 .social a img {
@@ -18,40 +37,35 @@ footer {
 }
 
 .blog__action a {
-    font-size: 1.35rem;
-    letter-spacing: .15rem;
-    color: #000;
-
+  font-size: 1.35rem;
+  letter-spacing: 0.15rem;
+  color: #000;
 }
 
 #footer__nav {
-
 }
-
 
 .nav-link {
-    color: #fff;
+  color: #fff;
 }
-
 
 /* clouds partial container */
 
 .clouds {
-  height: 30vh;
+  min-height: 30vh;
 }
 
 .cloud_container {
- width: 100%; 
- background-size: contain;
- background-repeat: no-repeat;
- background-position: center center;
- height: auto;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: auto;
 }
 
 .clouds__signup h3 {
   font-size: 1.15rem;
 }
-
 
 .review__carousel {
   font-weight: bold;
@@ -59,38 +73,40 @@ footer {
 }
 
 .review__body {
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 .review__author {
-  font-size: .55rem;
+  font-size: 0.55rem;
 }
 
 /* Subscription sign up */
 
 .subscription__wrapper {
   width: 400px;
-
 }
 
 .subscription__wrapper h3 {
-  font-size: .95rem;
+  font-size: 0.95rem;
   font-weight: bold;
-  letter-spacing: .05rem;
+  letter-spacing: 0.05rem;
 }
 
 .btn {
-  
   font-weight: bold;
   color: #fff;
   background-color: #3f5900;
   border-radius: 3px;
 }
 
-
 /* Blog link */
-
-.follow a{
+.follow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 15vw;
+}
+.follow a {
   font-size: 1.75rem;
   /* position: relative; */
   /* top: 10rem; */

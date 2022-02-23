@@ -55,7 +55,9 @@
 
     <div id="liveAlertPlaceholder" class="d-flex justify-content-center pt-5"></div>
 
-    <div id="showSignup" class="newsletter__wrapper position-absolute top-50 end-0 pr-5"> 
+
+    <% if(showSignup) { %>
+    <div id="showSignup" class="newsletter__wrapper position-absolute top-50 end-0 pr-5">
         <div class="d-flex justify-content-between flex-column ">
             <h3 class="flex-fill col text-white">Enter for your chance to win a FREE guided adventure</h3>
             <form action="#" class="row flex-fill">
@@ -68,7 +70,7 @@
             </form>
         </div>
     </div>
-
+    <% } %>
 
 
 </div>
