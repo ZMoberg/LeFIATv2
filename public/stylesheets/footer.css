@@ -51,12 +51,19 @@ footer .footer-nav {
   min-height: 30vh;
 }
 
-.cloud_container {
+/* .clouds img {
+  width: 100%;
+} */
+
+/* .cloud_container {
   width: 100%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
   height: auto;
+} */
+.clouds__signup {
+
 }
 
 .clouds__signup h3 {
@@ -64,6 +71,7 @@ footer .footer-nav {
 }
 
 .review__carousel {
+  position: absolute;
   font-weight: bold;
   font-style: italic;
 }
