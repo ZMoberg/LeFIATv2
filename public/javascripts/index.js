@@ -43,3 +43,8 @@ const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
   if (window.location.search.indexOf("?email=") > -1) {
     alert("Email Submitted Successfully!", "light");
   }
+
+
+  // mobile navigation
+
+  

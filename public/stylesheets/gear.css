@@ -11,7 +11,7 @@
   .gear_card img {
     height: 250px;
     width: auto;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .gear_title {

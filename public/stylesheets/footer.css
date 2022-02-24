@@ -32,15 +32,6 @@ footer .footer-nav {
   max-height: 2.15rem;
 }
 
-.blog__action a {
-  font-size: 1.35rem;
-  letter-spacing: 0.15rem;
-  color: #000;
-}
-
-#footer__nav {
-}
-
 .nav-link {
   color: #fff;
 }
@@ -49,25 +40,6 @@ footer .footer-nav {
 
 .clouds {
   min-height: 30vh;
-}
-
-/* .clouds img {
-  width: 100%;
-} */
-
-/* .cloud_container {
-  width: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: auto;
-} */
-.clouds__signup {
-
-}
-
-.clouds__signup h3 {
-  font-size: 1.15rem;
 }
 
 .review__carousel {
@@ -87,13 +59,15 @@ footer .footer-nav {
 /* Subscription sign up */
 
 .subscription__wrapper {
-  width: 10vw;
+  
 }
 
-.subscription__wrapper h3 {
-  font-size: 0.95rem;
-  font-weight: bold;
-  letter-spacing: 0.05rem;
+.clouds__signup {
+  position: absolute;
+}
+
+.clouds__signup h3 {
+  font-size: 1.15rem;
 }
 
 .btn {
@@ -116,10 +90,42 @@ footer .footer-nav {
   .follow {
     font-size: 1.5rem;
   }
+
 }
 /* If the screen size is smaller than 550px */
 @media (max-width: 550px) {
+
+/* clouds partial */
+
   .follow {
-    font-size: .75rem;
+    font-size: .85rem;
   }
+
+  .review__body {
+    font-size: 0.75rem;
+  }
+  
+  .review__author {
+    font-size: 0.65rem;
+  }
+  
+  .clouds__signup h3 {
+    font-size: .85rem;
+  }
+
+  .clouds__signup input {
+    font-size: .75rem;
+
+  }
+
+  .clouds__signup .btn {
+    font-size: .65rem;
+  }
+
+  /* footer nav */
+
+  .footer-nav .nav-item {
+    font-size: .80rem;
+  }
+
 }
