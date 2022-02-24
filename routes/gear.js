@@ -4,6 +4,7 @@ const Product = require('./../models/product')
 const ejsRender = require("./../utils/ejsRender");
 const router = express.Router()
 
+// multer file upload setup
 
 const storage = multer.diskStorage({
     // destination for file
@@ -41,11 +42,9 @@ const fileFilter = (req, file, cb) => {
 router.get('/', async (req, res) => {
     const products = await Product.find().sort({ createdAt: 'desc' })
     ejsRender(req, res, 'gear/index', { products: products })
-    // res.render('gear/index', { products: products })
 })
 
 router.get('/new', (req, res) => {
-    // res.render('gear/new', { product: new Product() })
     ejsRender(req, res, 'gear/new', { product: new Product() })
 })
 
@@ -57,7 +56,6 @@ router.get('/edit/:id', async (req, res) => {
 router.get('/:slug', async (req, res) => {
     const product = await Product.findOne({ slug: req.params.slug })
     if(product == null) res.redirect('/gear')
-    // else res.render('gear/show', { product: product })
     else ejsRender(req, res, 'gear/show', { product: product })
 })
 
@@ -94,8 +92,6 @@ function saveProductAndRedirect(path) {
             product = await product.save()
             res.redirect(`/gear/${product.slug}`)
         } catch(err) {  
-            console.log(err)
-            // res.render(`gear/${path}`, { product: product })
             ejsRender(req, res, `gear/${path}`, { product: product })
         }      
         }

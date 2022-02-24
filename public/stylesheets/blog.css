@@ -9,30 +9,6 @@
 
   }
 
-  /* nav {
-    position: relative;
-    top: -38rem;
-  } */
-
-  /* .article_title {
-    position: relative;
-    bottom: 2.25rem;
-  } */
-  /* Newsletter signup */
-
-  /* .newsletter__wrapper {
-    width: 400px;
-    position: absolute;
-    top: 35%;
-    right: 8rem;
-  }
-  
-  .newsletter__wrapper h3 {
-    font-size: .95rem;
-    font-weight: bold;
-    letter-spacing: .05rem;
-  } */
-
   /* article card display */
 
   .blog_article {
@@ -48,4 +24,11 @@
     position: absolute;
     bottom: 1rem;
     left: 18rem;
+  }
+
+  /* blog show page */
+
+  .markup img  {
+    max-width: 100%; 
+    height: auto;
   }

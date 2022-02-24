@@ -110,7 +110,7 @@ header {
 
   /* newsletter sign up */
   
-  .newsletter__wrapper{
+  .newsletter__wrapper {
     width: 400px;
   }
   
@@ -118,4 +118,10 @@ header {
     font-size: .95rem;
     font-weight: bold;
     letter-spacing: .05rem;
+  }
+
+  @media (max-width: 550px) {
+    .newsletter__wrapper {
+      width: 75%;
+    }
   }
