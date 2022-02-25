@@ -45,12 +45,12 @@
         </p>
     </div> -->
 
-    <% articles.forEach(article =>  { %>
-    <div class="card m-5">
-        <div class="blog_article border-0">
-            <!-- <div class="card-body"> -->
-            <div class="row" style="height: 250px;">
-                <div class="col-6 p-4 bg-light ">
+    <div class="container">
+        <% articles.forEach(article =>  { %>
+        <div class="blog_article m-3">
+            <!-- <div class="blog_article border-0"> -->
+            <div class="row">
+                <div class="col-6 p-2 bg-light ">
                     <h4 class="card-title"> <%= article.title %> </h4>
                     <div class="card-subtitle text-muted mb-2" style="font-size: .65rem;">Written by: </div>
                     <div class="d-flex" style="font-size: .85rem;">
@@ -59,27 +59,28 @@
                             <%- article.createdAt.toLocaleDateString() %>
                         </div>
                     </div>
-                    <div class="card-text">
+
+                    <div class="card-text p-1">
                         <%= article.description %>
                     </div>
 
-                    <div class="read_more">
+                    <div class="text-center">
                         <a class="" href="/blog/<%= article.slug %>">Read More</a>
                         <!-- <a href="/blog/edit/<%= article.id %>" class="btn btn-info">Edit</a>
-                        <form action="/blog/<%= article.id %>?_method=DELETE " method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form> -->
+                                <form action="/blog/<%= article.id %>?_method=DELETE " method="POST" class="d-inline">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form> -->
                     </div>
-
                 </div>
-                <div class="col-6 border-0">
-                    <img src="<%= article.image %>" alt="" class="img-fluid w-100 border-0">
+                <div class="col-6 p-0">
+                    <div class="">
+                        <img src="<%= article.image %>" alt="" class="">
+                    </div>
                 </div>
             </div>
-
             <!-- </div> -->
         </div>
+        <% }) %>
     </div>
-    <% }) %>
 
 </div>

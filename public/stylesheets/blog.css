@@ -17,7 +17,8 @@
 
   .blog_article img {
     max-height: 250px;
-    object-fit: cover;
+    width: auto;
+    object-fit: contain;
   }
 
   .read_more {
@@ -30,4 +31,20 @@
 
   .markup {
     font-family: good-times;
+  }
+
+  @media (max-width: 550px) {
+    .blog_article h4 {
+      font-size: 1.15rem;
+    }
+
+    .blog_article .card-text {
+      font-size: .75rem;
+      
+    }
+
+    .description {
+      overflow: hidden;
+    
+    }
   }
