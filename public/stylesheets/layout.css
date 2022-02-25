@@ -5,6 +5,6 @@ body {
 .bg {
     background: linear-gradient(to bottom, #99b5c1, #d1c4be);
     background-size: cover;
-    font-family: good-times;
+    /* font-family: good-times; */
 }
 

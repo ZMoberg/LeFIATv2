@@ -12,7 +12,7 @@
   /* article card display */
 
   .blog_article {
-    font-family: Korolev;
+    font-family: 'korolev';
   }
 
   .blog_article img {
@@ -28,7 +28,6 @@
 
   /* blog show page */
 
-  .markup img  {
-    max-width: 100%; 
-    height: auto;
+  .markup {
+    font-family: good-times;
   }
