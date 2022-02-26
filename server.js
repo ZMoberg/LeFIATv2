@@ -9,9 +9,8 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-// require("./controllers/passport")(passport)
-// const User = require('./models/user');
-
+const User = require('./models/user');
+const mongoose = require('mongoose')
 const mongoSanitize = require('express-mongo-sanitize');
 const expressLayouts = require('express-ejs-layouts')
 const ExpressError = require('./utils/ExpressError');
@@ -22,9 +21,7 @@ const tripsRouter = require('./routes/trips')
 const gearRouter = require('./routes/gear')
 const aboutRouter = require('./routes/about')
 const blogRouter = require('./routes/blog')
-// const loginRouter = require('./routes/login')
-// const logoutRouter = require('./routes/logout')
-// const registerRouter = require('./routes/register')
+const userRoutes = require('./routes/users')
 
 const app = express()
 
@@ -44,7 +41,7 @@ app.use(mongoSanitize({
 
 const MongoDBStore = require('connect-mongo')(session)
 
-const mongoose = require('mongoose')
+
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true })
     const db = mongoose.connection
