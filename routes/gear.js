@@ -75,27 +75,26 @@ router.delete('/:id', async (req, res) => {
     res.redirect(`/gear`)
 })
 
-function saveProductAndRedirect(path) {  
-    
-    return async (req, res) => {
-        let product = req.product
-        product.title = req.body.title
-        product.description = req.body.description
-        product.price = req.body.price
-        product.weight = req.body.weight
-        product.image = req.file?.path
-        
-        try {
-            if (! req.file || ! req.file.path) {
-                return res.sendStatus(400);
-              }
-            product = await product.save()
-            res.redirect(`/gear/${product.slug}`)
-        } catch(err) {  
-            ejsRender(req, res, `gear/${path}`, { product: product })
-        }      
-        }
+function saveProductAndRedirect(path) {
+  return async (req, res) => {
+    let product = req.product;
+    product.title = req.body.title;
+    product.description = req.body.description;
+    product.price = req.body.price;
+    product.weight = req.body.weight;
+    product.image = req.file?.path || product?.image;
+
+    try {
+      if (path !== "edit" && (!req.file || !req.file.path)) {
+        return res.sendStatus(400);
+      }
+      product = await product.save();
+      res.redirect(`/gear/${product.slug}`);
+    } catch (err) {
+      ejsRender(req, res, `gear/${path}`, { product: product });
     }
+  };
+}
 
 module.exports = router
 
