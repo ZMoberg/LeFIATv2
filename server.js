@@ -78,18 +78,18 @@ mongoose.connect(process.env.DATABASE_URL, {
 
     app.use(session(sessionConfig));
 
-    // app.use(passport.initialize());
-    // app.use(passport.session());
+    app.use(passport.initialize());
+    app.use(passport.session());
   
 
-    // passport.serializeUser(User.serializeUser());
-    // passport.deserializeUser(User.deserializeUser());
-    // passport.use(new LocalStrategy(User.authenticate()));
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
+    passport.use(new LocalStrategy(User.authenticate()));
 
-    // app.use((req, res, next) => {
-    //     res.locals.currentUser = req.user;
-    //     next();
-    // })
+    app.use((req, res, next) => {
+        res.locals.currentUser = req.user;
+        next();
+    })
     
     
 app.use('/', indexRouter)
@@ -97,6 +97,7 @@ app.use('/trips', tripsRouter)
 app.use('/gear', gearRouter)
 app.use('/about', aboutRouter)
 app.use('/blog', blogRouter)
+app.use('/users', userRoutes)
 // app.use('/login', loginRouter)
 // app.use('/logout', logoutRouter)
 // app.use('/register', registerRouter)
