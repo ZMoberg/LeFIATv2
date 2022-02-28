@@ -7,11 +7,9 @@ const path = require('path');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const methodOverride = require('method-override');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const User = require('./models/user');
 const mongoose = require('mongoose')
 const mongoSanitize = require('express-mongo-sanitize');
+
 const expressLayouts = require('express-ejs-layouts')
 const ExpressError = require('./utils/ExpressError');
 
@@ -77,32 +75,13 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 
     app.use(session(sessionConfig));
-
-    app.use(passport.initialize());
-    app.use(passport.session());
   
-
-    passport.serializeUser(User.serializeUser());
-    passport.deserializeUser(User.deserializeUser());
-    passport.use(new LocalStrategy(User.authenticate()));
-
-    app.use((req, res, next) => {
-        res.locals.currentUser = req.user;
-        next();
-    })
-    
     
 app.use('/', indexRouter)
 app.use('/trips', tripsRouter)
 app.use('/gear', gearRouter)
 app.use('/about', aboutRouter)
 app.use('/blog', blogRouter)
-app.use('/users', userRoutes)
-// app.use('/login', loginRouter)
-// app.use('/logout', logoutRouter)
-// app.use('/register', registerRouter)
-
-
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
