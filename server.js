@@ -19,7 +19,6 @@ const tripsRouter = require('./routes/trips')
 const gearRouter = require('./routes/gear')
 const aboutRouter = require('./routes/about')
 const blogRouter = require('./routes/blog')
-const userRoutes = require('./routes/users')
 
 const app = express()
 
