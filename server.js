@@ -14,12 +14,10 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local');
 const User = require('./models/user')
 const catchAsync = require('./utils/catchAsync')
-const ExpressError = require('./utils/ExpressError')
-
-
-
 const expressLayouts = require('express-ejs-layouts')
 const ExpressError = require('./utils/ExpressError');
+
+const ejsRender = require("./utils/ejsRender");
 
 
 const indexRouter = require('./routes/index')
@@ -113,12 +111,12 @@ app.use('/blog', blogRouter)
 app.use('/', userRouter)
 
 app.all('*', (req, res, next) => {
-    res.send('404!!!')
+    next(new ExpressError('Page Not Found', 404))
 })
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+    if(!err.message) err.message = 'Something went wrong'
     res.status(statusCode).render('error', { err })
 })
 
