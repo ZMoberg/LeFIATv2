@@ -2,6 +2,7 @@ const express = require('express')
 const multer = require('multer')
 const Product = require('./../models/product')
 const ejsRender = require("./../utils/ejsRender");
+const catchAsync = require('../utils/catchAsync')
 const router = express.Router()
 
 // multer file upload setup
@@ -39,41 +40,41 @@ const fileFilter = (req, file, cb) => {
     fileFilter: fileFilter
 })
 
-router.get('/', async (req, res) => {
+router.get('/', catchAsync(async (req, res) => {
     const products = await Product.find().sort({ createdAt: 'desc' })
     ejsRender(req, res, 'gear/index', { products: products })
-})
+}))
 
 router.get('/new', (req, res) => {
     ejsRender(req, res, 'gear/new', { product: new Product() })
 })
 
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', catchAsync(async (req, res) => {
     const product = await Product.findById(req.params.id)
     ejsRender(req, res, 'gear/edit', { product: product })
-})
+}))
 
-router.get('/:slug', async (req, res) => {
+router.get('/:slug', catchAsync(async (req, res) => {
     const product = await Product.findOne({ slug: req.params.slug })
     if(product == null) res.redirect('/gear')
     else ejsRender(req, res, 'gear/show', { product: product })
-})
+}))
 
-router.post('/', upload.single('image'), async (req, res, next) => {
+router.post('/', upload.single('image'), catchAsync(async (req, res, next) => {
     req.product = new Product()  
     next()
-}, saveProductAndRedirect('new'))
+}, saveProductAndRedirect('new')))
 
-router.put('/:id', upload.single('image'), async (req, res, next) => {
+router.put('/:id', upload.single('image'), catchAsync(async (req, res, next) => {
     console.log(req.file, req.body)
     req.product = await Product.findOneAndUpdate({ slug: req.params.slug })
     next()
-}, saveProductAndRedirect(`edit`))
+}, saveProductAndRedirect(`edit`)))
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', catchAsync(async (req, res) => {
     await Product.findByIdAndDelete(req.params.id)
     res.redirect(`/gear`)
-})
+}))
 
 function saveProductAndRedirect(path) {
   return async (req, res) => {

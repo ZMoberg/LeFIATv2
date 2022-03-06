@@ -1,5 +1,5 @@
 const multer = require('multer')
-
+const catchAsync = require('./../utils/catchAsync')
 const ejsRender = require("../utils/ejsRender");
 const Location = require('./../models/location')
 
@@ -38,46 +38,42 @@ const upload = multer({
 })
 
 // All trips route
-router.get('/', async (req, res) => {
+router.get('/', catchAsync(async (req, res) => {
     const locations = await Location.find()
     ejsRender(req, res, 'trips/trips', { locations: locations })
-    // res.render('trips/trips', { locations: locations })
-})
+}))
 
 // New trips route
 
 router.get('/new', (req, res) => {
     ejsRender(req, res, 'trips/new', { location: new Location() })
-    // res.render('trips/new', { location: new Location() })
 })
 
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', catchAsync(async (req, res) => {
     const location = await Location.findById(req.params.id)
     ejsRender(req, res, 'trips/edit', { location: location })
-    // res.render('trips/edit', { location: location })
-})
+}))
 
-router.get('/:slug', async (req, res) => {
+router.get('/:slug', catchAsync(async (req, res) => {
     const location = await Location.findOne({ slug: req.params.slug })
     if (location == null) return res.redirect('/trips')
     ejsRender(req, res, 'trips/show', { location: location })
-    // res.render('trips/show', { location: location })
-})
+}))
 
-router.post('/', upload.single('image'), async (req, res, next) => {
+router.post('/', upload.single('image'), catchAsync(async (req, res, next) => {
     req.location = new Location()
     next()
-}, saveLocationAndRedirect('new'))
+}, saveLocationAndRedirect('new')))
 
-router.put('/:id', upload.single('image'), async (req, res, next) => {
+router.put('/:id', upload.single('image'), catchAsync(async (req, res, next) => {
     req.location = await Location.findByIdAndUpdate(req.params.id)
     next()
-}, saveLocationAndRedirect('edit'))
+}, saveLocationAndRedirect('edit')))
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', catchAsync(async (req, res) => {
     await Location.findByIdAndDelete(req.params.id)
     res.redirect('/trips')
-})
+}))
 
 function saveLocationAndRedirect(path) {
     return async (req, res) => {
@@ -94,7 +90,6 @@ function saveLocationAndRedirect(path) {
         res.redirect(`/trips/${location.slug}`)
     } catch(e) {
         ejsRender(req, res, `trips/${path}`, { location: location })
-        // res.render(`trips/${path}`, { location: location })
     }
     }
 }

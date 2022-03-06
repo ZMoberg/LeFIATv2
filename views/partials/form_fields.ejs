@@ -1,26 +1,46 @@
 <div class="form-group">
     <label for="title">Title</label>
     <input type="text" name="title" id="title" class="form-control" value="<%= article.title %>" required>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter a title.
+    </div>
 </div>
 
 <div class="form-group">
     <label for="description">Description</label>
     <textarea name="description" id="description" class="form-control" required><%= article.description %></textarea>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter a description.
+    </div>
 </div>
 
 <div class="form-group">
     <label for="author">Written By: </label>
     <textarea name="author" id="author" class="form-control" required><%= article.author %></textarea>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter an author.
+    </div>
 </div>
 
 <div class="form-group">
     <label for="image">Upload Image</label>
     <input type="file" name="image" id="image" class="form-control-file">
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please upload a picture.
+    </div>
 </div>
 
 <div class="form-group">
     <label for="markdown">Markdown</label>
     <textarea name="markdown" id="markdown" class="form-control" required><%= article.markdown %></textarea>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter an article.
+    </div>
 </div>
 
 <a href="/blog" class="btn btn-secondary"> Cancel </a>

@@ -7,6 +7,10 @@
     <span class="input-group-text">$</span>
     <input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)">
     <span class="input-group-text">.00</span>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter a price.
+    </div>
 </div>
 
 <div class="form-group mb-3">
@@ -14,6 +18,10 @@
     <input type="text" name="days" id="days" class="form-control" aria-label="Number of days"
         value="<%= location.days %> ">
     <span class="input-group-text"> days</span>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter number of days.
+    </div>
 </div>
 
 <div class="form-group mb-3">
@@ -21,22 +29,38 @@
     <input type="text" name="nights" id="nights" class="form-control" aria-label="Number of nights"
         value="<%= location.nights %> ">
     <span class="input-group-text"> nights</span>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter number of nights.
+    </div>
 </div>
 
 <div class="form-group mb-3">
     <label for="date">Date of Trip</label>
     <input type="text" name="date" id="date" class="form-control" aria-label="Date of Trip"
         value="<%= location.date %> ">
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            Please enter a date.
+        </div>
 </div>
 
 <div class="form-group mb-3">
     <label for="description">Description</label>
     <textarea name="description" id="description" class="form-control" required><%= location.description %></textarea>
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter a description.
+    </div>
 </div>
 
 <div class="form-group mb-3">
     <label for="image">Upload Image</label>
     <input type="file" name="image" id="image" class="form-control-file">
+    <div class="valid-feedback">Looks good!</div>
+    <div class="invalid-feedback">
+        Please enter a file.
+    </div>
 </div>
 
 <a href="/trips" class="btn btn-secondary">Cancel</a>
