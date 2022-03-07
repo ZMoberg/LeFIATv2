@@ -26,9 +26,15 @@
                     <a class="nav-item nav-link px-4" href="/about">ABOUT</a>
                     <a class="nav-item nav-link px-4" href="/blog">BLOG</a>
 
-                    <!-- <a class="nav-item nav-link px-4" href="#"><img src="/img/search.png" alt="search icon"></a> -->
+                    <div class="navbar-nav ml-auto">
+                        <% if(!currentUser) {%>
+                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" href="/register">Register</a>
+                        <% } else {%>
+                        <a class="nav-link" href="/logout">Logout</a>
+                        <% } %>
+                    </div>
                     <div class="search-container">
-
                         <div class="search-box">
                             <!-------input-->
                             <div class="s-icon">
@@ -40,12 +46,6 @@
                     </div>
 
                     <a class="nav-link pl-3" href="/cart"><img src="/img/cart.png" alt="shopping cart icon"></a>
-
-                    <!-- <a class="nav-item nav-link px-4" href="/login">LOGIN / REGISTER</a>
-
-                <a class="nav-item nav-link px-4" href="/logout">LOGOUT</a> -->
-
-
 
                 </div>
             </div>

@@ -66,13 +66,13 @@ router.post('/', upload.single('image'), catchAsync(async (req, res, next) => {
 }, saveProductAndRedirect('new')))
 
 router.put('/:id', upload.single('image'), catchAsync(async (req, res, next) => {
-    console.log(req.file, req.body)
     req.product = await Product.findOneAndUpdate({ slug: req.params.slug })
     next()
 }, saveProductAndRedirect(`edit`)))
 
 router.delete('/:id', catchAsync(async (req, res) => {
     await Product.findByIdAndDelete(req.params.id)
+    req.flash('success', 'Successfully deleted a product!')
     res.redirect(`/gear`)
 }))
 
@@ -90,6 +90,7 @@ function saveProductAndRedirect(path) {
         return res.sendStatus(400);
       }
       product = await product.save();
+      
       res.redirect(`/gear/${product.slug}`);
     } catch (err) {
       ejsRender(req, res, `gear/${path}`, { product: product });
