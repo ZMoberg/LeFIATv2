@@ -1,7 +1,7 @@
 {
   "name": "lefiatV2",
   "version": "1.0.0",
-  "description": "",
+  "description": "![Le'Fiat](https://github.com/ZMoberg/lefiatV2/blob/master/public/img/lf-home.jpg)",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -40,5 +40,13 @@
   "devDependencies": {
     "dotenv": "^10.0.0",
     "nodemon": "^2.0.13"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZMoberg/lefiatV2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZMoberg/lefiatV2/issues"
+  },
+  "homepage": "https://github.com/ZMoberg/lefiatV2#readme"
 }
