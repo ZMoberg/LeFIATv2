@@ -1,10 +1,10 @@
-const express = require("express");
-const multer = require("multer");
-const Product = require("./../models/product");
+const express = require('express')
+const router = express.Router()
+const multer = require('multer')
+const Product = require('./../models/product')
 const ejsRender = require("./../utils/ejsRender");
-const catchAsync = require("../utils/catchAsync");
+const catchAsync = require('../utils/catchAsync')
 const { parseProductData } = require("../utils/productUtil");
-const router = express.Router();
 
 // multer file upload setup
 
