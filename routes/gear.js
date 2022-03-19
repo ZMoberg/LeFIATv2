@@ -73,27 +73,27 @@ router.get(
 router.post(
   "/",
   upload.single("image"),
-  catchAsync(async (req, res, next) => {
+  catchAsync(async (req, res) => {
     req.product = new Product();
-    next();
-  }, saveProductAndRedirect("new"))
+    await saveProductAndRedirect(req, res, "new")
+  })
 );
 
 router.put(
   "/:id",
   upload.single("image"),
-  catchAsync(async (req, res, next) => {
+  catchAsync(async (req, res) => {
     const product = parseProductData(req);
     try {
       req.product = await Product.findOneAndUpdate(
-        { title: product.title },
+        { id: req.params.id },
         product
       );
     } catch (error) {
       res.redirect(`/gear/edit`, { product });
     }
     res.redirect(`/gear/${req.product.slug}`);
-    next();
+
   })
 );
 
@@ -106,20 +106,19 @@ router.delete(
   })
 );
 
-function saveProductAndRedirect(path) {
-  return async (req, res) => {
+async function saveProductAndRedirect(req, res, path) {
+  
     let product = parseProductData(req);
     try {
       if (path !== "edit" && (!req.file || !req.file.path)) {
         return res.sendStatus(400);
       }
       product = await product.save();
-
       res.redirect(`/gear/${product.slug}`);
     } catch (err) {
       ejsRender(req, res, `gear/${path}`, { product });
     }
   };
-}
+
 
 module.exports = router;
