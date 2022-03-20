@@ -1,9 +1,11 @@
 const express = require('express')
+const router = express.Router()
+
 const multer = require('multer');
+const Article = require('./../models/article')
 const ejsRender = require('./../utils/ejsRender');
 const catchAsync = require('./../utils/catchAsync')
-const Article = require('./../models/article')
-const router = express.Router()
+const { parseArticleData } = require("../utils/blogUtil");
 
 // multer file upload setup
 
@@ -41,63 +43,83 @@ const upload = multer({
 })
 
 
-router.get('/', catchAsync(async (req, res) => {
-    const articles = await Article.find().sort({ createdAt: 'desc' })
-    ejsRender(req, res, 'blog/index', { articles: articles })
-}))
+router.get(
+  '/', 
+  catchAsync(async (req, res) => {
+    const articles = await Article.find().sort({ createdAt: 'desc' });
+    ejsRender(req, res, 'blog/index', { articles: articles });
+})
+);
 
 router.get('/new', (req, res) => {
     ejsRender(req, res, 'blog/new', { article: new Article() })
 })
 
-router.get('/edit/:id', catchAsync(async (req, res) => {
-    const article = await Article.findById(req.params.id)
-    ejsRender(req, res, 'blog/edit', { article: article })
-}))
+router.get(
+  '/edit/:id', 
+  catchAsync(async (req, res) => {
+    const article = await Article.findById(req.params.id);
+    ejsRender(req, res, 'blog/edit', { article: article });
+  })
+);
 
-router.get('/:slug', catchAsync(async (req, res) => {
-    const article = await Article.findOne({ slug: req.params.slug })
-    if(article == null) res.redirect('/blog')
-    else ejsRender(req, res, 'blog/show', { article: article })
-}))
+router.get(
+  '/:slug', 
+  catchAsync(async (req, res) => {
+    const article = await Article.findOne({ slug: req.params.slug });
+    if(article == null) res.redirect('/blog');
+    else ejsRender(req, res, 'blog/show', { article: article });
+  })
+);
 
-router.post('/', upload.single('image'), catchAsync(async (req, res, next) => {
+router.post(
+  '/', 
+  upload.single('image'), 
+  catchAsync(async (req, res) => {
     req.article = new Article()
-    next()
-}, saveArticleAndRedirect('new')))
+    await saveArticleAndRedirect(req, res, 'new')
+})
+);
 
-router.put('/:id', upload.single('image'), catchAsync(async (req, res, next) => {
-    console.log(req.file, req.body)
-    req.article = await Article.findOneAndUpdate({ slug: req.params.slug })
-    next()
-}, saveArticleAndRedirect('edit')))
-
-router.delete('/:id', catchAsync(async (req, res) => {
-    await Article.findByIdAndDelete(req.params.id)
-    res.redirect('/blog')
-}))
-
-function saveArticleAndRedirect(path) {
-    
-    return async (req, res) => {
-        let article = req.article
-        article.title = req.body.title
-        article.description = req.body.description
-        article.author = req.body.author
-        article.markdown = req.body.markdown
-        article.image = req.file?.path
-
-        try {
-            if (! req.file || ! req.file.path) {
-                return res.sendStatus(400);
-              }
-            article = await article.save()
-            res.redirect(`/blog/${article.slug}`)
-        } catch(err) {  
-            ejsRender(req, res, `blog/${path}`, { article: article })
-        }      
-        }
+router.put(
+  '/:id', 
+  upload.single('image'), 
+  catchAsync(async (req, res) => {
+    const article = parseArticleData(req);
+    try {
+    req.article = await Article.findOneAndUpdate(
+      { id: req.params.id },
+      article
+      );
+    } catch (error) {
+      res.redirect(`/blog/edit`, { article });
     }
+    res.redirect(`/blog/${req.article.slug}`);
+  })
+);
+
+router.delete(
+  '/:id', 
+  catchAsync(async (req, res) => {
+    await Article.findByIdAndDelete(req.params.id);
+    req.flash("success", "Successfully deleted a article!");
+    res.redirect('/blog');
+})
+);
+
+    async function saveArticleAndRedirect(req, res, path) {
+  
+      let article = parseArticleData(req);
+      try {
+        if (path !== "edit" && (!req.file || !req.file.path)) {
+          return res.sendStatus(400);
+        }
+        article = await article.save();
+        res.redirect(`/blog/${article.slug}`);
+      } catch (err) {
+        ejsRender(req, res, `blog/${path}`, { article });
+      }
+    };
 
 
 module.exports = router

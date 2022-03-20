@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+
 const multer = require('multer')
 const Product = require('./../models/product')
 const ejsRender = require("./../utils/ejsRender");
