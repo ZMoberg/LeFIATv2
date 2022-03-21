@@ -5,7 +5,7 @@ const multer = require('multer');
 const Article = require('./../models/article')
 const ejsRender = require('./../utils/ejsRender');
 const catchAsync = require('./../utils/catchAsync')
-const { parseArticleData } = require("../utils/blogUtil");
+const { parseArticleData, saveArticleAndRedirect } = require("../utils/blogUtil");
 
 // multer file upload setup
 
@@ -48,7 +48,7 @@ router.get(
   catchAsync(async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' });
     ejsRender(req, res, 'blog/index', { articles: articles });
-})
+  })
 );
 
 router.get('/new', (req, res) => {
@@ -78,7 +78,7 @@ router.post(
   catchAsync(async (req, res) => {
     req.article = new Article()
     await saveArticleAndRedirect(req, res, 'new')
-})
+  })
 );
 
 router.put(
@@ -104,22 +104,7 @@ router.delete(
     await Article.findByIdAndDelete(req.params.id);
     req.flash("success", "Successfully deleted a article!");
     res.redirect('/blog');
-})
+  })
 );
-
-    async function saveArticleAndRedirect(req, res, path) {
-  
-      let article = parseArticleData(req);
-      try {
-        if (path !== "edit" && (!req.file || !req.file.path)) {
-          return res.sendStatus(400);
-        }
-        article = await article.save();
-        res.redirect(`/blog/${article.slug}`);
-      } catch (err) {
-        ejsRender(req, res, `blog/${path}`, { article });
-      }
-    };
-
 
 module.exports = router

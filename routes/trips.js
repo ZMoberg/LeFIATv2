@@ -5,7 +5,7 @@ const multer = require('multer')
 const Location = require('./../models/location')
 const catchAsync = require('./../utils/catchAsync')
 const ejsRender = require("../utils/ejsRender");
-const { parseLocationData } = require("../utils/tripUtil");
+const { parseLocationData, saveLocationAndRedirect } = require("../utils/tripUtil");
 
 
 
@@ -127,19 +127,19 @@ router.delete(
 //     }
 // }
 
-async function saveLocationAndRedirect(req, res, path) {
+// async function saveLocationAndRedirect(req, res, path) {
   
-    let location  = parseLocationData(req);
-    try {
-      if (path !== "edit" && (!req.file || !req.file.path)) {
-        return res.sendStatus(400);
-      }
-      location   = await location.save();
-      res.redirect(`/trips/${location.slug}`);
-    } catch (err) {
-      ejsRender(req, res, `trips/${path}`, { location });
-    }
-  };
+//     let location  = parseLocationData(req);
+//     try {
+//       if (path !== "edit" && (!req.file || !req.file.path)) {
+//         return res.sendStatus(400);
+//       }
+//       location   = await location.save();
+//       res.redirect(`/trips/${location.slug}`);
+//     } catch (err) {
+//       ejsRender(req, res, `trips/${path}`, { location });
+//     }
+//   };
 
 
 module.exports = router

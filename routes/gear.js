@@ -5,7 +5,7 @@ const multer = require('multer')
 const Product = require('./../models/product')
 const ejsRender = require("./../utils/ejsRender");
 const catchAsync = require('../utils/catchAsync')
-const { parseProductData } = require("../utils/productUtil");
+const { parseProductData, saveProductAndRedirect } = require("../utils/productUtil");
 
 // multer file upload setup
 
@@ -106,20 +106,5 @@ router.delete(
     res.redirect(`/gear`);
   })
 );
-
-async function saveProductAndRedirect(req, res, path) {
-  
-    let product = parseProductData(req);
-    try {
-      if (path !== "edit" && (!req.file || !req.file.path)) {
-        return res.sendStatus(400);
-      }
-      product = await product.save();
-      res.redirect(`/gear/${product.slug}`);
-    } catch (err) {
-      ejsRender(req, res, `gear/${path}`, { product });
-    }
-  };
-
 
 module.exports = router;

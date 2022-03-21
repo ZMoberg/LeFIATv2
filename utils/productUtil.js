@@ -8,4 +8,18 @@ const parseProductData = (req) => {
     return product;
 };
 
-module.exports = { parseProductData }
+const saveProductAndRedirect = async(req, res, path) => {
+  
+    let product = parseProductData(req);
+    try {
+      if (path !== "edit" && (!req.file || !req.file.path)) {
+        return res.sendStatus(400);
+      }
+      product = await product.save();
+      res.redirect(`/gear/${product.slug}`);
+    } catch (err) {
+      ejsRender(req, res, `gear/${path}`, { product });
+    }
+  };
+
+module.exports = { parseProductData, saveProductAndRedirect }

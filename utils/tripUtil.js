@@ -10,4 +10,19 @@ const parseLocationData = (req) => {
     return location;
 };
 
-module.exports = { parseLocationData }
+saveLocationAndRedirect = async(req, res, path) => {
+  
+    let location  = parseLocationData(req);
+    try {
+      if (path !== "edit" && (!req.file || !req.file.path)) {
+        return res.sendStatus(400);
+      }
+      location   = await location.save();
+      res.redirect(`/trips/${location.slug}`);
+    } catch (err) {
+      ejsRender(req, res, `trips/${path}`, { location });
+    }
+  };
+
+
+module.exports = { parseLocationData, saveLocationAndRedirect }

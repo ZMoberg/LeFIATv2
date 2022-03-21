@@ -8,5 +8,19 @@ const parseArticleData = (req) => {
     return article;
 };
 
-module.exports = { parseArticleData }
+const saveArticleAndRedirect = async(req, res, path) => {
+  
+    let article = parseArticleData(req);
+    try {
+      if (path !== "edit" && (!req.file || !req.file.path)) {
+        return res.sendStatus(400);
+      }
+      article = await article.save();
+      res.redirect(`/blog/${article.slug}`);
+    } catch (err) {
+      ejsRender(req, res, `blog/${path}`, { article });
+    }
+  };
+
+module.exports = { parseArticleData, saveArticleAndRedirect }
 
