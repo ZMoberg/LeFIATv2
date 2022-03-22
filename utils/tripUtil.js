@@ -10,7 +10,7 @@ const parseLocationData = (req) => {
     return location;
 };
 
-saveLocationAndRedirect = async(req, res, path) => {
+const saveLocationAndRedirect = async(req, res, path) => {
   
     let location  = parseLocationData(req);
     try {

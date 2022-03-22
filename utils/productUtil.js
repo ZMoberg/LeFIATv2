@@ -3,6 +3,7 @@ const parseProductData = (req) => {
     product.title = req.body.title;
     product.description = req.body.description;
     product.price = req.body.price;
+    product.salePrice = req.body.salePrice;
     product.weight = req.body.weight;
     product.image = req.file?.path || product?.image;
     return product;
