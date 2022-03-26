@@ -1,7 +1,26 @@
-<div class="container ">
+<div class="container d-flex flex-column justify-content-center align-items-center">
     <h1 class="mb-4"> New Product </h1>
 
     <form class="mb-5 validated-form" action="/gear" method="POST" enctype="multipart/form-data" novalidate>
-        <%- include('../partials/product_fields')  %>
+
+        <!-- create if / else show statement -->
+
+        <!-- parent product categories -->
+
+        <div class="my-4">
+            <%- include('../partials/products/product_fields')  %>
+        </div>
+
+        <!-- product subcategory input forms -->
+
+        <%- include('../partials/products/shelter')  %>
+
+        <div class="submitButtons my-4">
+            <a href="/gear" class="btn btn-secondary"> Cancel </a>
+            <button type="submit" class="btn btn-primary"> Save </button>
+        </div>
+
+
+
     </form>
 </div>

@@ -1,4 +1,4 @@
-const { date } = require('joi')
+const { date, string } = require('joi')
 const mongoose = require('mongoose')
 const slugify = require('slugify')
 
@@ -14,6 +14,9 @@ const productSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true
+    },
+    sale: {
+        type: String,
     },
     salePrice:{
         type: Number,
@@ -34,6 +37,15 @@ const productSchema = new mongoose.Schema({
     image: {
         type: String,
         data: Buffer
+    },
+    backpack: {
+        type: String,
+    },
+    quilts: {
+        type: String,
+    },
+    shelter: {
+        type: String,
     }
 })
 

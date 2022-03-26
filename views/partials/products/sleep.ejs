@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="/stylesheets/gearInput.css">
+
+<div class="sleepForm">
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control" value="<%= product.title %>" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            Please enter a title.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <label for="sleepStyle">Sleeping Bag Style</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="bagStyle" id="bagStyle1" value="option1">
+            <label class="form-check-label" for="bagStyle1">Classic Sleeping Bag</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="bagStyle" id="bagStyle2" value="option2">
+            <label class="form-check-label" for="bagStyle2">Solo Quilt</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="tempRating">Temperature Rating</label>
+        <select id="tempRating" class="form-control col-6">
+            <option selected>Choose...</option>
+            <option value="temp10F">10 F</option>
+            <option value="temp20F">20 F</option>
+            <option value="temp30F">30 F</option>
+        </select>
+    </div>
+
+    <div class="form-group row">
+
+        <div class="form-group col">
+            <label for="bagSize">Bag Size</label>
+            <select id="bagSize" class="form-control">
+                <option selected>Choose...</option>
+                <option value="Short">Short (fits up to 5'6" / 168 cm)</option>
+                <option value="Medium">Medium (fits up to 6'0" / 183 cm)</option>
+                <option value="Long">Long (fits up to 6'6" / 198 cm)</option>
+            </select>
+        </div>
+
+        <div class="form-group col">
+            <label for="bagWidth">Bag Width</label>
+            <select id="bagWidth" class="form-control">
+                <option selected>Choose...</option>
+                <option value="temp10F">Slim (fits up to 50" / 127 cm)</option>
+                <option value="temp20F">Standard (fits up to 55" / 140 cm)</option>
+                <option value="temp30F">Broad (fits up to 60" / 152 cm)</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="weight">Bag Weight</label>
+        <div class="input-group">
+            <input type="number" min="9" step=".5" name="weight" id="weight" class="form-control col-6"
+                value="<%= product.weight %>" required></input>
+            <div class="input-group-prepend">
+                <div class="input-group-text">Oz's</div>
+            </div>
+        </div>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            Please enter a weight.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+            </div>
+            <input type="number" min="1" step="0.01" name="price" id="price" class="form-control col-6"
+                value="<%= product.price %>" required></input>
+        </div>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            Please enter a price.
+        </div>
+    </div>
+
+    <div class="form-group collapse" id="salePrice">
+        <label for="salePrice"> Sale Price</label>
+        <input type="number" min="1" step="0.01" name="salePrice" id="salePrice" class="form-control col-6"
+            value="<%= product.salePrice %>" required></input>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            Please enter a sale price.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" class="form-control"
+            required><%= product.description %></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            Please enter a description.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="image">Upload Images</label>
+        <input type="file" name="image" id="image" class="form-control-file" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">
+            Please enter a valid file.
+        </div>
+    </div>
+
+</div>
