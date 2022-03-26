@@ -11,6 +11,9 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    // create subcategories?
+
     price: {
         type: Number,
         required: true
@@ -38,6 +41,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         data: Buffer
     },
+    // subcategories ? 
+
+    // create separate objects referencing parent?
+
     backpack: {
         type: String,
     },
