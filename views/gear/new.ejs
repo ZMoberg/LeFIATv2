@@ -3,7 +3,7 @@
 
     <form class="mb-5 validated-form" action="/gear" method="POST" enctype="multipart/form-data" novalidate>
 
-        <!-- create if / else show statement -->
+        <!-- create if / else show subcategory statement -->
 
         <!-- parent product categories -->
 
@@ -13,7 +13,11 @@
 
         <!-- product subcategory input forms -->
 
-        <%- include('../partials/products/shelter')  %>
+        <!-- if / else show subcategory forms-->
+        
+        <%- include('../partials/products/backpack')  %>
+
+        <!-- Submit Buttons -->
 
         <div class="submitButtons my-4">
             <a href="/gear" class="btn btn-secondary"> Cancel </a>

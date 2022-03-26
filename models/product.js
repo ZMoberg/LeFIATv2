@@ -41,7 +41,7 @@ const productSchema = new mongoose.Schema({
     backpack: {
         type: String,
     },
-    quilts: {
+    sleep: {
         type: String,
     },
     shelter: {
