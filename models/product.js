@@ -49,12 +49,15 @@ const productSchema = new mongoose.Schema({
         type: String,
         volume: [{
             type: Number,
+            id: String
         }],
         strapStyle: [{
             type: String,
+            id: String
         }],
         packMaterial: [{
             type: String,
+            id: String
         }],
         
     },
@@ -62,24 +65,30 @@ const productSchema = new mongoose.Schema({
         type: String,
         sleepStyle: [{
             type: String,
+            id: String
         }],
         tempRating: [{
             type: String,
+            id: String
         }],
         bagSize: [{
             type: String,
+            id: String
         }],
         bagWidth: [{
             type: String,
+            id: String
         }]
     },
     shelter: {
         type: String,
         shelterStyle: [{
             type: String,
+            id: String
         }],
         sleepCapacity: [{
             type: String,
+            id: String
         }],
   
     }
