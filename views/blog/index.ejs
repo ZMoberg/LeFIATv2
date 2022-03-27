@@ -46,11 +46,12 @@
     </div> -->
 
     <div class="container">
+
         <% articles.forEach(article =>  { %>
+
         <div class="blog_article m-3">
-            <!-- <div class="blog_article border-0"> -->
             <div class="row">
-                <div class="col-6 p-2 bg-light ">
+                <div class="col-4 p-2" style="background-color: rgb(216, 212, 212)">
                     <h4 class="card-title"> <%= article.title %> </h4>
                     <div class="card-subtitle text-muted mb-2" style="font-size: .65rem;">Written by: </div>
                     <div class="d-flex" style="font-size: .85rem;">
@@ -64,35 +65,34 @@
                         <%= article.description %>
                     </div>
 
-                    <div class="text-center">
-                        <a class="" href="/blog/<%= article.slug %>">Read More</a>
-                        <!-- <a href="/blog/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+                    <div class="position-absolute bottom-0 start-50 translate-middle-x">
+                        <div class="">
+                            <a class="text-muted  " href="/blog/<%= article.slug %>">Read More</a>
+                            <!-- <a href="/blog/edit/<%= article.id %>" class="btn btn-info">Edit</a>
                                 <form action="/blog/<%= article.id %>?_method=DELETE " method="POST" class="d-inline">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form> -->
+                        </div>
+                        <div class="text-center mb-2">
+                            <a class="text-muted  " href="/blog/<%= article.slug %>"><img
+                                    src="/public/img/down-arrow.png" alt=""></a>
+                        </div>
                     </div>
+                    <img src="img/cloud1.png" alt=""
+                        class="card-img opacity-50 position-absolute top-50 start-50 translate-middle overflow-hidden"
+                        alt="
+                        Card image">
                 </div>
-                <div class="col-6 p-0">
+                <div class="col p-0">
                     <div class="">
                         <img src="<%= article.image %>" alt="" class="">
                     </div>
                 </div>
             </div>
-            <!-- </div> -->
         </div>
+
         <% }) %>
-    </div>
 
-    <div class=" " style="max-width: 18rem;">
-        <img class="card-img-top" src="uploads/2022-03-20T19:13:27.602Zbigsur.jpg" alt="Card image cap">
-
-        <div class="card-body" style="background-color: rgb(175, 170, 170)">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-            <img src="img/cloud1.png" alt="" class="card-img position-relative" alt="Card image">
-        </div>
     </div>
 
 </div>
