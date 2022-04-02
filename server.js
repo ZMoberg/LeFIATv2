@@ -47,48 +47,54 @@ const MongoDBStore = require('connect-mongo')(session)
 
 
 mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true })
-    const db = mongoose.connection
-    db.on('error', error => console.error(error))
-    db.once('open', () => console.log('Connected to Mongoose'))
+    useNewUrlParser: true
+})
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', () => console.log('Connected to Mongoose'))
 
-    const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
-    const dbUrl = process.env.DATABASE_URL || 'mongodb://localhost:3000/lefiatv2'
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
+const dbUrl = process.env.DATABASE_URL || 'mongodb://localhost:3000/lefiatv2'
 
-    const store = new MongoDBStore({
-        url: dbUrl,
-        secret,
-        touchAfter: 24 * 60 * 60
-    });
-    
-    store.on('error', function (e) {
-        console.log('session store error', e)
-    })
-    
-    const sessionConfig = {
-        store,
-        name: 'session',
-        secret,
-        resave: false,
-        saveUninitialized: true,
-        cookie: {
-            httpOnly: true,
-            secure: true,
-            expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-            maxAge: 1000 * 60 * 60 * 24 * 7
-        }
-    }
+const store = new MongoDBStore({
+    url: dbUrl,
+    secret,
+    touchAfter: 24 * 60 * 60
+});
+
+store.on('error', function (e) {
+    // console.log('session store error', e)
+})
+
+// const sessionConfig = {
+// store,
+// name: 'session',
+// secret,
+// resave: false,
+// saveUninitialized: true,
+// cookie: {
+//     httpOnly: true,
+//     secure: true,
+//     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+//     maxAge: 1000 * 60 * 60 * 24 * 7
+// }
+// }
 
 
-app.use(session(sessionConfig));
+app.use(session({
+    secret,
+    cookie: {
+        maxAge: 1000 * 36000
+    },
+    saveUninitialized: true,
+    resave: false,
+}));
 app.use(flash());
 
-app.use((req, res, next ) => {
-    console.log(req.session)
+app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
-    console.log(res.locals.currentUser)
     next()
 })
 
@@ -98,7 +104,7 @@ passport.use(new LocalStrategy(User.authenticate()))
 
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
-    
+
 app.use('/', indexRouter)
 app.use('/trips', tripsRouter)
 app.use('/gear', gearRouter)
@@ -113,7 +119,7 @@ app.all('*', (req, res, next) => {
 app.use((err, req, res, next) => {
     if (!err.message) err.message = "Something went wrong";
     ejsRender(req, res, "error", { err });
-  });
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

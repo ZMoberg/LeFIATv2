@@ -13,7 +13,7 @@ const locationSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
-        
+
     },
     price: {
         type: String,
@@ -37,10 +37,9 @@ const locationSchema = new mongoose.Schema({
     }
 });
 
-locationSchema.pre('validate', function(next) {
-    console.log("pre validate:", this)
+locationSchema.pre('validate', function (next) {
     if (this.title) {
-       this.slug = slugify(this.title, {lower: true, strict: true})
+        this.slug = slugify(this.title, { lower: true, strict: true })
     }
 
     next()
